@@ -110,9 +110,7 @@ a {
         transition: color 0.3s;
       }
         .nav-list li.active a {
-          background-color: #FF5733;
-          border-bottom: 2px solid #E8480D;
-          border-radius: 5px 5px 0 0;
+          color: #FF5733;
         }
       
       .nav-list li a:hover {
