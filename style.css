@@ -42,6 +42,9 @@ a {
         color: white;
         text-align: center;
         padding: 20px 0;
+        display: flex;
+  justify-content: center;
+  align-items: center;
       }
       
       .footer-content {
@@ -83,8 +86,9 @@ a {
         box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
         position: fixed;
         width: 100%;
-        top: 0;
-        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       
       .nav-list {
@@ -132,6 +136,7 @@ a {
       .footer {
         display: flex;
         justify-content: center;
+          align-items: center;
       }
       .navbar {
         display: flex;
