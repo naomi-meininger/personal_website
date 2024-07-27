@@ -6,6 +6,9 @@ body, html {
     background-color: #f0f8ff;
     color: #333;
     scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1, h2 {
@@ -54,13 +57,16 @@ h1, h2 {
     text-align: center;
     padding: 100px 0 50px;
     background-color: lightblue;
+    flex: 1; /* Make the hero section take up remaining space */
 }
 
 .hero img {
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
@@ -81,6 +87,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .footer-content {
