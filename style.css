@@ -260,7 +260,138 @@ a {
       
       
       
-      
+      /* General Styles */
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color: #333;
+    margin: 20px 0;
+}
+
+a {
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #FF5733;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #333;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    margin: 0 15px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.nav-list li.active a {
+    color: #FF5733;
+}
+
+.nav-list li a:hover {
+    color: #FF5733;
+}
+
+/* Profile Image */
+.me {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.profile {
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding-left: 0;
+}
+
+.footer-list li {
+    margin: 0 15px;
+}
+
+.footer-list li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+.footer-list li a:hover {
+    color: #FF5733;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .footer {
+        padding: 10px 0;
+    }
+}
+
       
       
       
