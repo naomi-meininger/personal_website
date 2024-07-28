@@ -173,7 +173,8 @@ a {
         background-color: #f5f5f5;
         padding: 40px 0;
         text-align: center;
-        
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;    /* Rounded corners */
       }
       
       .skills-list {
