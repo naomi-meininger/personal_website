@@ -4,11 +4,6 @@ head {
 
 }
 
-/* #name {
-  padding: 50px;
-} */
-
-
 
 body {
 
@@ -34,12 +29,14 @@ div.container {
 
 #description {
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  padding: 20px;
+  padding: 5%;
   border-radius: 15px;    /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   border: 4px dashed #FF5733;;
   background-origin: border-box;
   background-clip: content-box, border-box; /* Clip the background */
+  margin-bottom: 5%;
+
   
 
 }
@@ -112,6 +109,12 @@ a {
       
       /* Additional responsive styles for the footer */
       @media screen and (max-width: 768px) {
+        .profile {
+          width: 50%;
+          height: 90%; /* Adjust size for smaller screens */
+          margin-bottom: 10px;
+          margin-left: 10px;
+      }
         .footer {
           padding: 10px 0;
         }
@@ -174,6 +177,66 @@ a {
           align-items: center;
         }
       }
+   /* Responsive styles for iPhone screen sizes */
+@media screen and (max-width: 700px) {
+
+  div.container {
+      flex-direction: column;
+      margin-left: 5%;
+      margin-right: 5%;
+  }
+  .profile {
+    width: 80%;
+  }
+
+  #description {
+      padding: 5%;
+      border-radius: 5%;
+      border: 2px dashed #FF5733;
+      width: 80%;
+      font-size: 80%;
+      margin-bottom: 5%;
+  }
+
+  .name {
+    font-size: 110%;
+  }
+
+  .profile {
+      width: 50%;
+      height: 90%; /* Adjust size for smaller screens */
+      margin-bottom: 10px;
+      margin-left: 10px;
+  }
+
+  .navbar {
+      flex-direction: column;
+      padding: 10px;
+  }
+
+  .nav-list {
+      flex-direction: column;
+  }
+
+  .nav-list li {
+      margin: 5px 0;
+  }
+
+  .footer {
+      padding: 10px 0;
+      flex-direction: column;
+  }
+
+  .footer-list {
+      flex-direction: column;
+      margin-bottom: 5px;
+  }
+
+  .footer-list li {
+      margin: 5px 0;
+  }
+}
+
 
       .footer {
         display: flex;
