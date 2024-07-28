@@ -46,8 +46,8 @@ div.name {
 
 
 .profile {
-  width:315px;
-  height:440px;
+  width: 315px;
+  height: 440px;
   border-radius: 50%; /* Makes the image circular */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Adds a shadow around the image */
   object-fit: cover; /* Ensures the image maintains aspect ratio and covers the entire area */
