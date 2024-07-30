@@ -7,7 +7,12 @@ head {
 
 body {
 
-background-color: lightblue;
+background: linear-gradient(to right, #6dd5ed, #2193b0);
+/* Fallback for older browsers */
+background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+background: -moz-linear-gradient(to right, #6dd5ed, #2193b0);
+background: -o-linear-gradient(to right, #6dd5ed, #2193b0);
+color: #333; /* Ensures text is readable */
 
 
 }
@@ -55,6 +60,7 @@ div.name {
 
 .name, #description {
   font-size: 80%;
+  font-weight: bold;
 }
 
 
@@ -175,8 +181,6 @@ a {
         text-align: center;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 15px;    /* Rounded corners */
-
-
         
       }
       
@@ -200,7 +204,6 @@ a {
       /* ... Previous styles for the navigation bar and footer ... */
 
 .projects-section {
-        background-color: lightblue;
         padding: 40px 0;
         text-align: center;
       }
@@ -245,7 +248,6 @@ a {
 /* ... Previous styles for the navigation bar and footer ... */
 
 .ventures-section {
-        background-color: lightblue;
         padding: 40px 0;
         text-align: center;
       }
@@ -319,5 +321,11 @@ a {
         }
        
         
+      }
+
+      @media screen and (max-width: 365px) {
+        .name {
+          font-size:75%;
+        }
       }
 
