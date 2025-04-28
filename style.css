@@ -288,6 +288,30 @@ a {
       .venture-link:hover {
         background-color: #D43700;
       }
+
+div.me {
+  display: flex;
+  align-items: center; /* vertically align picture and text */
+  gap: 40px; /* space between picture and text */
+  padding: 20px;
+}
+
+.profile {
+  max-width: 100%; /* keeps image responsive */
+  height: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.description {
+  text-align: left; /* align text to the left */
+  max-width: 600px; /* optional: limits width for better readability */
+}
       
        /* Responsive styles */
        @media screen and (max-width: 768px) {
