@@ -291,15 +291,11 @@ a {
 
 div.me {
   display: flex;
-  align-items: center;
-  justify-content: center; /* <--- THIS centers the whole thing horizontally */
-  gap: 40px;
+  justify-content: center; /* centers horizontally */
+  align-items: center; /* centers vertically */
+  width: 100%;
   padding: 20px;
-}
-
-.profile {
-  max-width: 100%; /* keeps image responsive */
-  height: auto;
+  box-sizing: border-box;
 }
 
 div.container {
@@ -310,8 +306,14 @@ div.container {
 }
 
 .description {
-  text-align: left; /* align text to the left */
-  max-width: 600px; /* optional: limits width for better readability */
+  text-align: left;
+  max-width: 600px;
+}
+
+.profile {
+  max-width: 315px;
+  height: auto;
+  border-radius: 10px;
 }
       
        /* Responsive styles */
