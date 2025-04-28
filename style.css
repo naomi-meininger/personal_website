@@ -291,8 +291,9 @@ a {
 
 div.me {
   display: flex;
-  align-items: center; /* vertically align picture and text */
-  gap: 40px; /* space between picture and text */
+  align-items: center;
+  justify-content: center; /* <--- THIS centers the whole thing horizontally */
+  gap: 40px;
   padding: 20px;
 }
 
