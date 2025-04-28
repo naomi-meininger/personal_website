@@ -32,7 +32,7 @@ div.container {
 
 }
 
-#description {
+.description {
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
   padding: 5%;
   border-radius: 15px;    /* Rounded corners */
