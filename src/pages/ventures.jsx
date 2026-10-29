@@ -1,7 +1,7 @@
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import CreditLine from "../components/CreditLine.jsx";
-import { credits } from "../data/theater.js";
+import { creditGroups } from "../data/theater.js";
 import ShowGuess from "../components/ShowGuess.jsx";
 import { publicFile } from "../data/links.js";
 import poster from "../assets/images/tick-tick-boom-poster.jpg";
@@ -11,7 +11,7 @@ function Ventures() {
     <Layout current="ventures">
       <div className="wrap page-intro">
         <h1 className="page-title reveal">Theater &amp; teaching</h1>
-        <p className="lede reveal">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair.</p>
+        <p className="lede reveal">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair. I'm still performing after graduation, most recently with After Work Theater.</p>
       </div>
 
       <section className="section" aria-labelledby="tick">
@@ -39,19 +39,21 @@ function Ventures() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="credits">
-        <div className="wrap split">
-          <h2 id="credits" className="reveal">Tufts credits</h2>
-          <ul className="credits compact">
-            {credits.map((c) => (
-              <li key={c.show} className="reveal reveal-credit">
-                <CreditLine role={<i>{c.show}</i>} who={c.role} />
-                <p className="credit-meta">{c.term}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      {creditGroups.map((group) => (
+        <section className="section" aria-labelledby={group.id} key={group.id}>
+          <div className="wrap split">
+            <h2 id={group.id} className="reveal">{group.name}</h2>
+            <ul className="credits compact">
+              {group.credits.map((c) => (
+                <li key={c.show} className="reveal reveal-credit">
+                  <CreditLine role={<i>{c.show}</i>} who={c.role} />
+                  <p className="credit-meta">{c.company ? `${c.term}, ${c.company}` : c.term}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ))}
 
       <section className="section" aria-labelledby="audience">
         <div className="wrap split">
