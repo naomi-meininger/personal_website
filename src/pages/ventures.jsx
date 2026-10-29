@@ -2,6 +2,7 @@ import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import CreditLine from "../components/CreditLine.jsx";
 import { credits } from "../data/theater.js";
+import ShowGuess from "../components/ShowGuess.jsx";
 import { publicFile } from "../data/links.js";
 import poster from "../assets/images/tick-tick-boom-poster.jpg";
 
@@ -49,6 +50,15 @@ function Ventures() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="audience">
+        <div className="wrap split">
+          <h2 id="audience" className="reveal">In the audience</h2>
+          <div className="reveal">
+            <ShowGuess />
+          </div>
         </div>
       </section>
 

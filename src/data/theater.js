@@ -1,3 +1,10 @@
+// The number behind the guessing game on the Theater page. Update it after each show you log in Mezzanine.
+export const showsSeen = {
+  year: 2026,
+  count: 32,
+  asOf: "October 2026",
+};
+
 // Newest first, from Naomi's theater résumé. Show titles render in italics.
 export const credits = [
   { show: "Huit Femmes / Eight Women", role: "Stage Manager", term: "Spring 2024" },
