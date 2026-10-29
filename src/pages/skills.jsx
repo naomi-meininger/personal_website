@@ -91,8 +91,8 @@ function Skills() {
       <div className="wrap page-intro">
         <h1 className="page-title reveal">Skills</h1>
         <p className="lede reveal">
-          Day to day at Disney Streaming I work mostly in Scala, Java and Python, with DynamoDB, PostgreSQL and Redis,
-          shipping through Docker, Kubernetes and Spinnaker.
+          Day to day at Disney Streaming I work mostly in Scala, Java and Python, on AWS with DynamoDB, PostgreSQL and
+          Redis, shipping through Docker, Kubernetes and Spinnaker.
         </p>
         <p className="muted reveal">Select an underlined skill to see the jobs and projects where I've used it.</p>
       </div>

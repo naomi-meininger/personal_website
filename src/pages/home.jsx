@@ -14,8 +14,9 @@ function Home() {
           <div className="reveal">
             <h1 className="marquee">Naomi<br />Meininger</h1>
             <p className="lede">
-              I'm a software engineer at Disney Streaming. I studied computer science at Tufts, with minors in
-              mathematics and theater, and graduated magna cum laude in 2024.
+              I'm a software engineer at Disney Streaming and a master's student at USC, studying integrated design,
+              business and technology. Before that I studied computer science at Tufts, with minors in mathematics
+              and theater.
             </p>
             <p className="muted">Outside of work I'm an avid musical theater fan, and in 2023 I directed my first show.</p>
             <div className="actions">
@@ -50,10 +51,14 @@ function Home() {
       <section className="section" aria-labelledby="education">
         <div className="wrap split">
           <h2 id="education" className="reveal">Education</h2>
-          <div className="reveal reveal-credit">
-            <CreditLine role={education.degree} who={education.school} />
-            <p className="credit-meta">{education.detail}</p>
-          </div>
+          <ol className="credits">
+            {education.map((school) => (
+              <li key={school.school} className="reveal reveal-credit">
+                <CreditLine role={school.degree} who={school.school} />
+                <p className="credit-meta">{school.detail}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

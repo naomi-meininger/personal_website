@@ -45,6 +45,7 @@ function Ventures() {
             {credits.map((c) => (
               <li key={c.show} className="reveal reveal-credit">
                 <CreditLine role={<i>{c.show}</i>} who={c.role} />
+                <p className="credit-meta">{c.term}</p>
               </li>
             ))}
           </ul>

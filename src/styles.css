@@ -602,6 +602,22 @@ html.reveal-ready .reveal-credit:not(.in) .leader {
   transform: translateY(-0.28em) scaleX(0);
 }
 
+/* The show poster: lights come up on it, like a stage going from blackout to full. */
+html.reveal-ready .poster.reveal {
+  transition:
+    opacity 0.5s ease 0.2s,
+    transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s,
+    filter 1.8s ease-out 0.35s,
+    box-shadow 1.8s ease-out 0.35s;
+}
+
+html.reveal-ready .poster.reveal:not(.in) {
+  opacity: 0.6;
+  transform: scale(0.96);
+  filter: brightness(0.15) saturate(0.3);
+  box-shadow: none;
+}
+
 /* ---------- Skills ---------- */
 
 .skill-group {

@@ -43,11 +43,11 @@ export const projects = [
   {
     id: "theta-budget-tracker",
     title: "Theta Budget Tracker",
-    skills: ["Python", "Selenium", "Heroku"],
-    meta: ["Personal project", "Kappa Alpha Theta", "Python, Selenium"],
+    skills: ["Python", "Flask", "Selenium", "JavaScript", "jQuery", "HTML", "CSS", "Heroku"],
+    meta: ["Personal project", "Kappa Alpha Theta", "Python, Flask, Selenium"],
     topics: ["Web apps"],
     body: [
-      "As VP of Finance for my sorority, I was the only person who could see the budget, so every board member had to ask me before planning an event. I built a site that uses Selenium to pull the budget from my account so they could check their own numbers.",
+      "As VP of Finance for my sorority, I was the only person who could see the budget, so every board member had to ask me before planning an event. I built a Flask site, hosted on Heroku, that uses Selenium to pull the budget from my account so they could check their own numbers.",
     ],
     links: [{ label: "Code on GitHub", href: "https://github.com/naomi-meininger/theta-budget-website" }],
     status: "No longer hosted",
