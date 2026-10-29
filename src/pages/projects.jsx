@@ -2,6 +2,7 @@ import { useState } from "react";
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import { projects, topics } from "../data/projects.js";
+import SkillTags from "../components/SkillTags.jsx";
 
 // Dim the word "redacted" so the sample output reads like real tool output.
 function TerminalLine({ kind, text }) {
@@ -16,7 +17,7 @@ function TerminalLine({ kind, text }) {
 
 function Project({ project }) {
   return (
-    <article className="entry">
+    <article className="entry reveal" id={project.id}>
       <div className="entry-meta">
         {project.meta.map((line) => <p key={line}>{line}</p>)}
       </div>
@@ -37,6 +38,8 @@ function Project({ project }) {
           </figure>
         )}
 
+        <SkillTags skills={project.skills} />
+
         {(project.links.length > 0 || project.status) && (
           <div className="entry-links">
             {project.links.map((link) => <ExternalLink key={link.href} href={link.href}>{link.label}</ExternalLink>)}
@@ -55,9 +58,9 @@ function Projects() {
   return (
     <Layout current="projects">
       <div className="wrap page-intro">
-        <h1 className="page-title">Projects</h1>
-        <p className="lede">Things I've built in class, for my sorority and on my own, newest first.</p>
-        <div className="filters" role="group" aria-label="Filter projects by topic">
+        <h1 className="page-title reveal">Projects</h1>
+        <p className="lede reveal">Things I've built in class, for my sorority and on my own, newest first.</p>
+        <div className="filters reveal" role="group" aria-label="Filter projects by topic">
           {["All", ...topics].map((t) => {
             const count = t === "All" ? projects.length : projects.filter((p) => p.topics.includes(t)).length;
             return (

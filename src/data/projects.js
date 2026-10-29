@@ -4,7 +4,9 @@ import { publicFile } from "./links.js";
 // Newest first. `topics` drive the filter on the Projects page.
 export const projects = [
   {
+    id: "alarm",
     title: "Alarm.py",
+    skills: ["Python", "Scapy"],
     meta: ["Spring 2024", "Network security", "Python, Scapy"],
     topics: ["Security"],
     body: [
@@ -25,7 +27,9 @@ export const projects = [
     links: [{ label: "Code on GitHub", href: "https://github.com/naomi-meininger/alarm" }],
   },
   {
+    id: "end-game-simulator",
     title: "End Game Simulator",
+    skills: [],
     meta: ["Spring 2024", "Sports Analytics", "With Rohun Nanda, Mehr Dewan and Matt Feinberg"],
     topics: ["Data & modeling"],
     body: [
@@ -37,7 +41,9 @@ export const projects = [
     ],
   },
   {
+    id: "theta-budget-tracker",
     title: "Theta Budget Tracker",
+    skills: ["Python", "Selenium", "Heroku"],
     meta: ["Personal project", "Kappa Alpha Theta", "Python, Selenium"],
     topics: ["Web apps"],
     body: [
@@ -47,7 +53,9 @@ export const projects = [
     status: "No longer hosted",
   },
   {
+    id: "theta-tracker",
     title: "Theta Tracker",
+    skills: ["Heroku"],
     meta: ["Personal project", "Kappa Alpha Theta"],
     topics: ["Web apps"],
     body: [
@@ -58,7 +66,9 @@ export const projects = [
     status: "No longer hosted",
   },
   {
+    id: "e4u",
     title: "E4U: Exercise for You",
+    skills: ["MongoDB", "Heroku"],
     meta: ["Web Programming", "Team of four", "MongoDB"],
     topics: ["Web apps"],
     body: [
@@ -67,7 +77,9 @@ export const projects = [
     links: [{ label: "Open the app", href: "https://inspiredbyw3.herokuapp.com/" }],
   },
   {
+    id: "image-compressor",
     title: "Image compressor and decompressor",
+    skills: ["C"],
     meta: ["Fall 2022", "Machine Structure and Assembly-Language Programming", "With Stephen Chakoudian"],
     topics: ["Systems"],
     body: [
@@ -83,7 +95,9 @@ export const projects = [
     links: [],
   },
   {
+    id: "music-and-math",
     title: "Music and math",
+    skills: [],
     meta: ["Spring 2022", "Mathematical Modeling", "With Scott Fullenbaum and Grace Hindermann"],
     topics: ["Data & modeling"],
     body: [

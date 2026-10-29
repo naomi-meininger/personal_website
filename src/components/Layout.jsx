@@ -1,4 +1,18 @@
+import { useEffect } from "react";
 import { links, pages } from "../data/links.js";
+import { setupReveal } from "../reveal.js";
+
+// When arriving from a link like projects.html#alarm, scroll to and highlight that entry.
+// (React renders after the browser's own jump to the hash, so it has to be done here.)
+function useHashTarget() {
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    const el = id ? document.getElementById(id) : null;
+    if (!el || el.classList.contains("skill")) return;
+    el.classList.add("is-target", "in");
+    requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
+  }, []);
+}
 
 export function ExternalLink({ href, children, className = "text-link" }) {
   return (
@@ -32,7 +46,7 @@ function Header({ current }) {
 function Footer() {
   return (
     <footer className="site-footer">
-      <div className="wrap">
+      <div className="wrap reveal">
         <h2>Get in touch</h2>
         <p>Email is the best way to reach me.</p>
         <div className="actions">
@@ -48,6 +62,8 @@ function Footer() {
 }
 
 export default function Layout({ current, children }) {
+  useEffect(() => setupReveal(), []);
+  useHashTarget();
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>

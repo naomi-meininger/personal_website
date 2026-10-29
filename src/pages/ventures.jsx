@@ -9,13 +9,13 @@ function Ventures() {
   return (
     <Layout current="ventures">
       <div className="wrap page-intro">
-        <h1 className="page-title">Theater &amp; teaching</h1>
-        <p className="lede">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair.</p>
+        <h1 className="page-title reveal">Theater &amp; teaching</h1>
+        <p className="lede reveal">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair.</p>
       </div>
 
       <section className="section" aria-labelledby="tick">
         <div className="wrap feature">
-          <figure className="poster">
+          <figure className="poster reveal">
             <img
               src={poster}
               alt="Poster for tick, tick... BOOM! by Jonathan Larson, directed by Naomi Meininger, showing piano keys and scattered sheet music, September 3 and 4 at Balch Theater"
@@ -24,7 +24,7 @@ function Ventures() {
               loading="lazy"
             />
           </figure>
-          <div>
+          <div className="reveal">
             <h2 id="tick">Directing <i>tick, tick... BOOM!</i></h2>
             <p className="kicker">Summer 2023, Balch Theater</p>
             <p>
@@ -40,10 +40,10 @@ function Ventures() {
 
       <section className="section" aria-labelledby="credits">
         <div className="wrap split">
-          <h2 id="credits">Tufts credits</h2>
+          <h2 id="credits" className="reveal">Tufts credits</h2>
           <ul className="credits compact">
             {credits.map((c) => (
-              <li key={c.show}>
+              <li key={c.show} className="reveal reveal-credit">
                 <CreditLine role={<i>{c.show}</i>} who={c.role} />
               </li>
             ))}
@@ -53,8 +53,8 @@ function Ventures() {
 
       <section className="section" aria-labelledby="course">
         <div className="wrap split">
-          <h2 id="course">Teaching</h2>
-          <div>
+          <h2 id="course" className="reveal">Teaching</h2>
+          <div className="reveal">
             <h3><i>Bright Young Women</i>: Feminism and Gender Representation in Disney</h3>
             <p className="credit-meta">Tufts ExCollege</p>
             <p className="course-body">
