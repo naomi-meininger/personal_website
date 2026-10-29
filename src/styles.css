@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "Big Shoulders Display";
-  src: url("fonts/big-shoulders-display.woff2") format("woff2");
+  src: url("./assets/fonts/big-shoulders-display.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 
 @font-face {
   font-family: "Newsreader";
-  src: url("fonts/newsreader.woff2") format("woff2");
+  src: url("./assets/fonts/newsreader.woff2") format("woff2");
   font-weight: 200 800;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: "Newsreader";
-  src: url("fonts/newsreader-italic.woff2") format("woff2");
+  src: url("./assets/fonts/newsreader-italic.woff2") format("woff2");
   font-weight: 200 800;
   font-style: italic;
   font-display: swap;
@@ -440,6 +440,45 @@ main { display: block; }
 .figure { margin: 4px 0 22px; max-width: 420px; }
 .figure img { border: 1px solid var(--line); border-radius: 4px; }
 .figure figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 8px; }
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.filters button {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 16px 7px;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.filters button:hover { border-color: var(--ink); }
+
+.filters button[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--ground);
+}
+
+.filters .count {
+  font-family: var(--text);
+  font-weight: 400;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+.course-body { margin-top: 20px; }
 
 /* ---------- Skills ---------- */
 
