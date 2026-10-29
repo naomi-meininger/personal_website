@@ -84,7 +84,11 @@ export default function ShowGuess() {
 
         {over && (
           <div className="ticket-after">
-            <p className="ticket-note">Counted in my Mezzanine log as of {asOf}.</p>
+            <p className="ticket-note">
+              Counted in my{" "}
+              <a className="text-link" href="https://www.theaterdiary.com/" target="_blank" rel="noopener">Mezzanine</a>{" "}
+              log as of {asOf}.
+            </p>
             <button type="button" className="button" onClick={reset}>Play again</button>
           </div>
         )}
