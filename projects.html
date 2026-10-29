@@ -1,148 +1,168 @@
-
- <head>
-        <meta charset = "utf-8">
-        <meta name = "viewport" content="width=device-width">
-        <title>Personal Website</title>
-        <link href="style.css" rel="stylesheet" type="text/css"
-        />
-  <style>
-        .alert {
-         font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #f7f7f7;
-            border: 1px solid #ddd;
-        }
-        .warning {
-         font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            color: #FF5733;
-        }
-        .alert-info {
-         font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            color: #337AB7;
-        }
-        .alert-warning {
-         font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            color: #FFC300;
-        }
-    </style>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Naomi Meininger</title>
+  <meta name="description" content="Projects by Naomi Meininger: network intrusion detection, sports analytics, image compression, web apps and mathematical modeling.">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <nav class="navbar">
-                <ul class="nav-list">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="skills.html">Skills</a></li>
-                  <li class="active"><a  href="projects.html">Projects</a></li>
-                  <li><a href="ventures.html">Other Ventures</a></li>
-                </ul>
-        </nav>
-       
-        <section class="projects-section">
-        
-         <div class="project">
-                  <h3>Security: Alarm.py</h3>
-                  <p> In Spring 2024, I developed a network incident detection tool that enables users to identify potential vulnerabilities and security breaches in 
-                   network traffic using live network streams or sets of PCAP files for various security incidents. </p>
-                  <div class="alert warning">
-                      <p>WARNING: No IPv4 address found on ap1 !</p>
-                      <p>WARNING: No IPv4 address found on en1 !</p>
-                      <p>WARNING: more No IPv4 address found on en2 !</p>
-                  </div>
-                  <div class="alert">
-                      <p>ALERT #1: FIN Scan is detected from 172.19.47.252 (TCP)</p>
-                      <p>ALERT #2: FIN Scan is detected from 172.19.47.252 (TCP)</p>
-                      ...
-                      <p>ALERT #11: Nikto Scan is detected from 10.151.31.252 (TCP port 80)</p>
-                      <p>ALERT #12: Nikto Scan is detected from 10.151.31.252 (TCP port 80)</p>
-                     ...
-                    <p>ALERT #29: HTTP credentials is detected from 10.144.31.242 (Username: <b>redacted</b>, Password: <b>redacted</b>)</p>
-                      <p>ALERT #30: HTTP credentials is detected from 10.144.31.242 (Username: <b>redacted</b>, Password: <b>redacted</b>)</p>
-                
-                  </div>
-           <a href="https://github.com/naomi-meininger/alarm" class="project-link" target="_blank"> View Project</a>
-       </div>
-         
-                <div class="project">
-                  <h3>Personal Project: Theta Budget Tracker!</h3>
-                  <p> In my sorority, Kappa Alpha Theta, I was the VP of Finance and therefore was in charge of managing the budget. However, other executive board members
-                        had to ask me about the budget for their specific events instead of being able to check it themselves. In turn, I created this platform
-                        that utilizies Selenium to scrape the budget from my VP of Finance account. 
-                </p>
-                  <a href="https://theta-budget-app-4aabb7545f1b.herokuapp.com/" class="project-link">Deactived Due to Heroku Costs</a>
-                </div>
-                <div class="project">
-                        <h3>        Personal Project: Theta Tracker!
-                        </h3>
-                        <p>
-                                In my sorority, Kappa Alpha Theta, we have a points system. If you miss events without an excuse, you lose points. If you go to non-required events, you gain points.
-                                To be in good standing and be able to go to fun events such as formal, you must be at 0 or positive points. Currently, members have no way of knowing their point values 
-                                without reaching out to the VP of Administration, who keeps track of everyone's points. We also cannot just have an excel spreadsheet for everyone to 
-                                view because points are supposed to be private. In order to fix this issue, I created the Theta Tracker. Each user is given a unique password, 
-                                which they can use to login to this website and check their points. Additionally, I added a dues checker as well since I was VP of Finance and 
-                                wanted to consolidate all of this information into one program. There also is a feature for members to check when their points and dues were last updated. 
-                        </p>
-                        <a href="https://naomi-meininger.github.io/theta_tracker/" class="project-link">Deactived Due to Heroku Costs</a>
-                      </div>
-          <div class="project">
-                        <h3>Web Programming: E4U (Exercise for You)</h3>
-                        <p>                 Designed a web application with 3 classmates that utilizes MongoDB to create user profiles, add workouts, search for relevant exercises in an API, view past workouts, and edit and delete past workouts.
-                        </p>
-                        <a href="https://inspiredbyw3.herokuapp.com/" class="project-link" target="_blank">View Project</a>
-      
-                      </div>
-          <div class="project">
-                        <h3>        Sports Analytics: End Game Simulator</h3>
-                        <p>
-                               In Spring 2024, my partners, Rohun Nanda, Mehr Dewan, Matt Feinberg, and I created The End Game Simulator to allow
-                               users to determine the best winning strategy for a team in question. 
-                        </p>
-                         <a href="https://docs.google.com/presentation/d/12SW0c7auWC1h2tl860GD3fyzBPeXcb_hSZoyhimoaWU/edit?usp=sharing" class="project-link" target="_blank">Class Presentation</a>
-                        <a href="https://github.com/RohunNanda/CS152-FinalProject" class="project-link" target="_blank">Github to Project</a>
-                      </div>
-         </div>
-               
-                      <div class="project">
-                        <h3>                Machine Structure and Assembly-Language Programming: Image Compressor and Decompressor
-                        </h3>
-                        <p>
-                                In Fall 2022, my programming partner, Stephen Chakoudian, and I applied a Discrete Cosine Transformation and bit packing techniques 
-                                to compress a ppm image to a binary file. We utilized bitwise operations to decompress a binary file to a ppm image while averaging 2% data loss.
-                
-                        </p>
-                        <img src="arith_results.png" alt="results" class = "comp40" width="315" height="300">
-      
-                      </div>
-                <div class="project">
-                  <h3>Mathematical Modeling: Music and Math</h3>
-                  <p> In Spring 2022, I, along with my classmates Scott Fullenbaum and Grace Hindermann, worked to model and quantify the evolution of music, 
-                        along with showing how a multitude of influences have shaped music history. We approached the problem by using three different ways 
-                        to evaluate and model the influence of music over time: a directed graph among artists, least squares regression looking at data vs 
-                        time, and Neural Networks classifying music by genre. The results of each method are detailed in the paper.</p>
-                  <a href="https://docs.google.com/presentation/d/1qLlpuPIATkukZ-hbOyzz6mRWsLtxt2_uiusQCKGlU2s/edit?usp=sharing" class="project-link" target="_blank">Initial Presentation, including code</a>
-                  <a href="Final_Project_for_website.pdf" class="project-link" target="_blank">Final Paper</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-                
-              </section>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">Naomi Meininger</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="ventures.html">Theater &amp; teaching</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
+  <main id="main">
+    <div class="wrap page-intro">
+      <h1 class="page-title">Projects</h1>
+      <p class="lede">Things I've built in class, for my sorority and on my own, newest first.</p>
+    </div>
 
-
-<footer class="footer">
-        <div class="footer-content">
-          <ul class="footer-list">
-            <li><a href="meininger naomi resume.pdf" target="_blank">Download Resume</a></li>
-<li><a href="https://github.com/naomi-meininger" target="_blank">Go to Github</a></li>
-<li><a href="https://www.linkedin.com/in/naomi-meininger/" target="_blank">Go to Linkedin</a></li>
-<li><a href="mailto:nmeining18@gmail.com" target="_blank">Contact Me</a></li>
-
-          </ul>
+    <div class="wrap">
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Spring 2024</p>
+          <p>Network security</p>
+          <p>Python, Scapy</p>
         </div>
-      </footer>
+        <div>
+          <h3>Alarm.py</h3>
+          <p>A network incident detection tool. Point it at a live network stream or a set of PCAP files and it flags likely scans, vulnerabilities and credential leaks as they appear.</p>
+          <div class="terminal" role="img" aria-label="Sample output from Alarm.py showing detected FIN scans, Nikto scans and HTTP credentials"><span class="warn">WARNING: No IPv4 address found on en1 !</span>
+ALERT #1: FIN Scan is detected from 172.19.47.252 (TCP)
+ALERT #2: FIN Scan is detected from 172.19.47.252 (TCP)
+<span class="dim">...</span>
+ALERT #11: Nikto Scan is detected from 10.151.31.252 (TCP port 80)
+<span class="dim">...</span>
+ALERT #29: HTTP credentials is detected from 10.144.31.242 (Username: <span class="dim">redacted</span>, Password: <span class="dim">redacted</span>)</div>
+          <div class="entry-links">
+            <a class="text-link" href="https://github.com/naomi-meininger/alarm" target="_blank" rel="noopener">Code on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Spring 2024</p>
+          <p>Sports Analytics</p>
+          <p>With Rohun Nanda, Mehr Dewan and Matt Feinberg</p>
+        </div>
+        <div>
+          <h3>End Game Simulator</h3>
+          <p>A simulator that tests end-of-game strategies so a team can see which one gives it the best chance of winning.</p>
+          <div class="entry-links">
+            <a class="text-link" href="https://docs.google.com/presentation/d/12SW0c7auWC1h2tl860GD3fyzBPeXcb_hSZoyhimoaWU/edit?usp=sharing" target="_blank" rel="noopener">Class presentation</a>
+            <a class="text-link" href="https://github.com/RohunNanda/CS152-FinalProject" target="_blank" rel="noopener">Code on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Personal project</p>
+          <p>Kappa Alpha Theta</p>
+          <p>Python, Selenium</p>
+        </div>
+        <div>
+          <h3>Theta Budget Tracker</h3>
+          <p>As VP of Finance for my sorority, I was the only person who could see the budget, so every board member had to ask me before planning an event. I built a site that uses Selenium to pull the budget from my account so they could check their own numbers.</p>
+          <div class="entry-links">
+            <a class="text-link" href="https://github.com/naomi-meininger/theta-budget-website" target="_blank" rel="noopener">Code on GitHub</a>
+            <span class="status">No longer hosted</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Personal project</p>
+          <p>Kappa Alpha Theta</p>
+        </div>
+        <div>
+          <h3>Theta Tracker</h3>
+          <p>Members earn points for optional events and lose them for unexcused absences, and you need zero or more to attend events like formal. Points are private, so a shared spreadsheet wasn't an option, and members had to ask an officer for their total.</p>
+          <p>Theta Tracker gives each member a private login to check their points and dues, and shows when each was last updated.</p>
+          <div class="entry-links">
+            <a class="text-link" href="https://github.com/naomi-meininger/theta_tracker" target="_blank" rel="noopener">Code on GitHub</a>
+            <span class="status">No longer hosted</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Web Programming</p>
+          <p>Team of four</p>
+          <p>MongoDB</p>
+        </div>
+        <div>
+          <h3>E4U: Exercise for You</h3>
+          <p>A workout app where you create a profile, search an exercise API, log workouts, and view, edit or delete past ones.</p>
+          <div class="entry-links">
+            <a class="text-link" href="https://inspiredbyw3.herokuapp.com/" target="_blank" rel="noopener">Open the app</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Fall 2022</p>
+          <p>Machine Structure and Assembly-Language Programming</p>
+          <p>With Stephen Chakoudian</p>
+        </div>
+        <div>
+          <h3>Image compressor and decompressor</h3>
+          <p>We compressed PPM images to a compact binary format using a discrete cosine transform and bit packing, then used bitwise operations to decompress them, averaging about 2% data loss.</p>
+          <figure class="figure">
+            <img src="images/compression-results.jpg" alt="Three test images shown before compression and after decompression, with error rates between 2.2% and 2.66%" width="724" height="836" loading="lazy">
+            <figcaption>Originals beside their decompressed versions.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-meta">
+          <p>Spring 2022</p>
+          <p>Mathematical Modeling</p>
+          <p>With Scott Fullenbaum and Grace Hindermann</p>
+        </div>
+        <div>
+          <h3>Music and math</h3>
+          <p>We modeled how music has evolved and what has influenced it, three ways: a directed graph of influence between artists, least squares regression on musical features over time, and a neural network that classifies songs by genre.</p>
+          <div class="entry-links">
+            <a class="text-link" href="Final_Project_for_website.pdf" target="_blank" rel="noopener">Final paper (PDF)</a>
+            <a class="text-link" href="https://docs.google.com/presentation/d/1qLlpuPIATkukZ-hbOyzz6mRWsLtxt2_uiusQCKGlU2s/edit?usp=sharing" target="_blank" rel="noopener">Presentation and code</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p>Email is the best way to reach me.</p>
+      <div class="actions">
+        <a class="button" href="mailto:nmeining18@gmail.com">Email me</a>
+        <a class="text-link" href="meininger%20naomi%20resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="text-link" href="https://github.com/naomi-meininger" target="_blank" rel="noopener">GitHub</a>
+        <a class="text-link" href="https://www.linkedin.com/in/naomi-meininger/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="fine">© Naomi Meininger</p>
+    </div>
+  </footer>
 </body>
+</html>

@@ -1,61 +1,98 @@
-
+<!doctype html>
+<html lang="en">
 <head>
-        <meta charset = "utf-8">
-        <meta name = "viewport" content="width=device-width">
-        <title>Personal Website</title>
-        <link href="style.css" rel="stylesheet" type="text/css"
-        />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theater and teaching | Naomi Meininger</title>
+  <meta name="description" content="Naomi Meininger's theater credits at Tufts, including directing tick, tick... BOOM!, and the ExCollege course she taught on gender representation in Disney.">
+  <link rel="preload" href="fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <nav class="navbar">
-                <ul class="nav-list">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="skills.html">Skills</a></li>
-                  <li><a href="projects.html">Projects</a></li>
-                  <li class="active"><a  href="ventures.html">Other Ventures</a></li>
-                </ul>
-        </nav>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="index.html">Naomi Meininger</a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="ventures.html" aria-current="page">Theater &amp; teaching</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        <section class="ventures-section">
-                <div class="venture">
-                  <img src="tick.jpg" alt="Venture 1" style="max-width: 25%;">
-                  <h3>Tick,Tick...Boom!: Directorial Debut</h3>
-                  <p>Throughout my time at Tufts I have been an avid member of the theater community. In Summer 2023,
-                        I was fortunate enough to have the opportunity to direct a production! We rehearsed about 3 times a
-                        week, scheduling around work and other summer commitments. I am so proud of what we accomplished.
-                </p>
-                 <p>My other Tufts theater credits include <i>The Lightning Thief: The Percy Jackson Musical</i> (Costume Designer), 
-                        <i>Lizzie</i> (H&M Designer), <i>The Addams Family</i> (Grandma Addams), <i>Into the Woods</i> (H&M Designer), 
-                        <i>Falsettos</i> (Deck Stage Manager), <i>Hair</i> (H&M Mentor), <i>The Wolves</i> (Costume Designer), and <i>Huit Femmes/Eight Women</i> (Co-Stage Manager).
-                </p>
-                  <a href="Tick Tick Boom Program -3.pdf" class="venture-link" target="_blank">Program</a>
-                </div>
-                <div class="venture">
-                  <h3> Bright Young Women: Feminism and Gender Representation in Disney</h3>
-                  <p>Tufts has a program called the ExCollege where undergraduates can teach classes on a topic of their choosing. I've always had
-                        a fascination with Disney's complex legacy. My inspiration for the course came from the line in “Part of Your World” from 
-                        The Little Mermaid where Ariel sings “Bright young women, sick of swimmin', ready to stand.” The juxtaposition of these words 
-                        against the plot of the film started to make me think more deeply about the role Ariel and other Disney Princesses play in 
-                        their feature films. In turn, this course was born. </p>
-                        <p>                One of the coolest moments of the course was coordinating Susan Egan, the voice of Meg in Hercules, to speak to the class!
-                        </p>
-                  <a href="https://docs.google.com/document/d/1U0ftU8DyDtZW8G0hQ57bYLfVmsKKM-pkveC_3pcIlww/edit?usp=sharing" class="venture-link" target="_blank">Syllabus</a>
-                  <a href="https://us11.campaign-archive.com/?u=1b61b20b21d482f765d9ebed1&id=ca6dd380ac" class="venture-link" target="_blank">Interview About Course</a>
+  <main id="main">
+    <div class="wrap page-intro">
+      <h1 class="page-title">Theater &amp; teaching</h1>
+      <p class="lede">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair.</p>
+    </div>
 
-                </div>
-              </section>
-
-
-<footer class="footer">
-        <div class="footer-content">
-          <ul class="footer-list">
-           <li><a href="meininger naomi resume.pdf" target="_blank">Download Resume</a></li>
-<li><a href="https://github.com/naomi-meininger" target="_blank">Go to Github</a></li>
-<li><a href="https://www.linkedin.com/in/naomi-meininger/" target="_blank">Go to Linkedin</a></li>
-<li><a href="mailto:nmeining18@gmail.com" target="_blank">Contact Me</a></li>
-
-          </ul>
+    <section class="section" aria-labelledby="tick">
+      <div class="wrap feature">
+        <figure class="poster">
+          <img src="images/tick-tick-boom-poster.jpg" alt="Poster for tick, tick... BOOM! by Jonathan Larson, directed by Naomi Meininger, showing piano keys and scattered sheet music, September 3 and 4 at Balch Theater" width="760" height="960" loading="lazy">
+        </figure>
+        <div>
+          <h2 id="tick">Directing <i>tick, tick... BOOM!</i></h2>
+          <p class="kicker">Summer 2023, Balch Theater</p>
+          <p>My directorial debut. We rehearsed about three times a week all summer, scheduling around everyone's jobs and other commitments, and opened in September. I'm so proud of what we made.</p>
+          <div class="entry-links">
+            <a class="text-link" href="Tick%20Tick%20Boom%20Program%20-3.pdf" target="_blank" rel="noopener">Read the program (PDF)</a>
+          </div>
         </div>
-      </footer>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="credits">
+      <div class="wrap split">
+        <h2 id="credits">Tufts credits</h2>
+        <ul class="credits compact">
+          <li><div class="credit-line"><span class="role"><i>tick, tick... BOOM!</i></span><span class="leader" aria-hidden="true"></span><span class="who">Director</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>The Lightning Thief</i></span><span class="leader" aria-hidden="true"></span><span class="who">Costume Designer</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>Lizzie</i></span><span class="leader" aria-hidden="true"></span><span class="who">Hair &amp; Makeup Designer</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>The Addams Family</i></span><span class="leader" aria-hidden="true"></span><span class="who">Grandma Addams</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>Into the Woods</i></span><span class="leader" aria-hidden="true"></span><span class="who">Hair &amp; Makeup Designer</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>Falsettos</i></span><span class="leader" aria-hidden="true"></span><span class="who">Deck Stage Manager</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>Hair</i></span><span class="leader" aria-hidden="true"></span><span class="who">Hair &amp; Makeup Mentor</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>The Wolves</i></span><span class="leader" aria-hidden="true"></span><span class="who">Costume Designer</span></div></li>
+          <li><div class="credit-line"><span class="role"><i>Huit Femmes / Eight Women</i></span><span class="leader" aria-hidden="true"></span><span class="who">Co-Stage Manager</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="course">
+      <div class="wrap split">
+        <h2 id="course">Teaching</h2>
+        <div>
+          <h3><i>Bright Young Women</i>: Feminism and Gender Representation in Disney</h3>
+          <p class="credit-meta">Tufts ExCollege</p>
+          <p style="margin-top:20px">The ExCollege lets undergraduates design and teach a class on a topic of their choosing. I've always been fascinated by Disney's complicated legacy, and the course grew out of a line in <i>The Little Mermaid</i>'s "Part of Your World": Ariel sings about being ready to stand on her own, yet the film's plot pulls in a different direction. That tension got me thinking about the roles Ariel and the other Disney princesses really play in their films.</p>
+          <p class="pull">A highlight was bringing in Susan Egan, the voice of Meg in <i>Hercules</i>, to speak to the class.</p>
+          <div class="entry-links">
+            <a class="text-link" href="https://docs.google.com/document/d/1U0ftU8DyDtZW8G0hQ57bYLfVmsKKM-pkveC_3pcIlww/edit?usp=sharing" target="_blank" rel="noopener">Syllabus</a>
+            <a class="text-link" href="https://us11.campaign-archive.com/?u=1b61b20b21d482f765d9ebed1&amp;id=ca6dd380ac" target="_blank" rel="noopener">Interview about the course</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>Get in touch</h2>
+      <p>Email is the best way to reach me.</p>
+      <div class="actions">
+        <a class="button" href="mailto:nmeining18@gmail.com">Email me</a>
+        <a class="text-link" href="meininger%20naomi%20resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="text-link" href="https://github.com/naomi-meininger" target="_blank" rel="noopener">GitHub</a>
+        <a class="text-link" href="https://www.linkedin.com/in/naomi-meininger/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="fine">© Naomi Meininger</p>
+    </div>
+  </footer>
 </body>
+</html>
