@@ -68,7 +68,7 @@ function Home() {
           <ul className="next-links">
             <li className="reveal"><a href="projects.html"><strong>Projects</strong><span>Network security, sports analytics, image compression and more</span></a></li>
             <li className="reveal"><a href="skills.html"><strong>Skills</strong><span>Languages, frameworks and tools I work with</span></a></li>
-            <li className="reveal"><a href="ventures.html"><strong>Theater &amp; teaching</strong><span>Directing <i>tick, tick... BOOM!</i> and teaching a course on Disney</span></a></li>
+            <li className="reveal"><a href="ventures.html"><strong>Theater &amp; Teaching</strong><span>Directing <i>tick, tick... BOOM!</i> and teaching a course on Disney</span></a></li>
           </ul>
         </div>
       </section>

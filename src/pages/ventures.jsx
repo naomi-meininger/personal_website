@@ -10,7 +10,7 @@ function Ventures() {
   return (
     <Layout current="ventures">
       <div className="wrap page-intro">
-        <h1 className="page-title reveal">Theater &amp; teaching</h1>
+        <h1 className="page-title reveal">Theater &amp; Teaching</h1>
         <p className="lede reveal">I spent my four years at Tufts in the theater community, onstage, backstage and eventually in the director's chair. I'm still performing after graduation, most recently with After Work Theater.</p>
       </div>
 
