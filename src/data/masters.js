@@ -25,6 +25,7 @@ export const courses = [
     code: "IDSN 538",
     name: "Extended Reality Technologies",
     term: "Fall 2026",
+    summary: "Working with XR wearables and the principles of UX and UI design for extended reality.",
     upcoming: "Final project coming soon",
   },
 ];
