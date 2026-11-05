@@ -876,7 +876,7 @@ html.reveal-ready .poster.reveal:not(.in) {
 /* ---------- Master's Program page ---------- */
 
 .term { padding-bottom: 64px; }
-.course { padding: 28px 0 8px; }
+.course { padding: 28px 0 32px; }
 .course + .course { border-top: 1px solid var(--line); }
 .course-head { display: grid; grid-template-columns: 240px minmax(0, 1fr); column-gap: 40px; margin-bottom: 24px; }
 .course-head > * { grid-column: 2; }
@@ -884,6 +884,21 @@ html.reveal-ready .poster.reveal:not(.in) {
 .course-title { font-weight: 800; font-size: 2.2rem; line-height: 1; margin-bottom: 10px; }
 .course-head p { margin: 0; }
 .course-highlights { margin: 12px 0 0; padding-left: 1.2em; }
+.course-upcoming {
+  margin: 0 0 0 280px;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1.5px dashed var(--line);
+  border-radius: 14px;
+  color: var(--muted);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+.upcoming-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brass); flex: none; }
 
 /* The case study sits in its own frame, inset from the page */
 .eco-frame-wrap { margin-left: 280px; transition: margin 0.2s ease; }
@@ -1249,6 +1264,7 @@ html.reveal-ready .poster.reveal:not(.in) {
   .course-head { grid-template-columns: 1fr; }
   .course-head > *, .course-meta { grid-column: 1; grid-row: auto; }
   .eco-frame-wrap { margin-left: 0; }
+  .course-upcoming { margin-left: 0; }
   .eco-inner { padding-left: 28px; padding-right: 28px; }
   .eco-split { grid-template-columns: 1fr; gap: 18px; }
   .eco-hero-inner { grid-template-columns: 1fr; }

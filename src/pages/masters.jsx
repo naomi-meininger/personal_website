@@ -13,7 +13,7 @@ function Course({ course }) {
       <div className="course-head reveal">
         <p className="course-meta">{course.code}</p>
         <h3 id={`${course.id}-title`} className="course-title">{course.name}</h3>
-        <p>{course.summary}</p>
+        {course.summary && <p>{course.summary}</p>}
         {course.highlights?.length > 0 && (
           <ul className="course-highlights">{course.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
         )}
@@ -22,6 +22,9 @@ function Course({ course }) {
         )}
       </div>
       {CaseStudy && <CaseStudy />}
+      {course.upcoming && (
+        <p className="course-upcoming"><span className="upcoming-dot" aria-hidden="true"></span>{course.upcoming}</p>
+      )}
     </article>
   );
 }

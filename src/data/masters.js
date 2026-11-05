@@ -20,6 +20,13 @@ export const courses = [
       "A semester working in a five-person product team to take a product from a blank page to an investor pitch: problem research, value proposition, go-to-market, market sizing, competitive analysis and a five-year pro forma.",
     caseStudy: "ecotein",
   },
+  {
+    id: "idsn-538",
+    code: "IDSN 538",
+    name: "Extended Reality Technologies",
+    term: "Fall 2026",
+    upcoming: "Final project coming soon",
+  },
 ];
 
 /* Template for a new class:
@@ -31,5 +38,6 @@ export const courses = [
     summary: "One or two sentences on what the class covered.",
     highlights: ["Something you made or learned", "Another one"],   // optional
     links: [{ label: "Final project (PDF)", href: "https://..." }],  // optional
+    upcoming: "Final project coming soon",                         // optional placeholder; remove once the project is up
   },
 */
