@@ -345,8 +345,8 @@ export default function Ecotein() {
         <div className="insights">
           {insights.map((x) => (
             <figure key={x.who} className="insight reveal">
-              <blockquote>"{x.quote}"</blockquote>
-              <figcaption>{x.who}, {x.field.toLowerCase()}</figcaption>
+              <blockquote>“{x.quote}”</blockquote>
+              <figcaption>{x.who} · {x.field}</figcaption>
               <p><strong>What we changed:</strong> {x.change}</p>
             </figure>
           ))}

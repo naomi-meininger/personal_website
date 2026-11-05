@@ -157,10 +157,10 @@ export const proForma =
   "https://docs.google.com/spreadsheets/d/1jtyvyG6DoslshTeot4kF7PS8KIeW520i/edit?usp=drive_link&ouid=100643048238972513869&rtpof=true&sd=true";
 
 export const insights = [
-  { who: "Business consultant", field: "Operations and finance", quote: "The disruptive angle could make this more financially viable than existing ways of reducing plastic.", change: "We lead with the business case: free plastic feedstock, with plastic credits as a second income." },
-  { who: "Software engineer", field: "Industrial data visualization", quote: "Misinformation could scare buyers away, but strong branding and education could help us ride the protein wave.", change: "We sell business to business through feed mills, with safety data first, not as a consumer brand." },
-  { who: "Process development engineer", field: "Biotech manufacturing", quote: "Scaling is the hard part: commercial production needs bioreactors of roughly 10,000 to 100,000 L.", change: "We start with a contract fermenter and build our own plants only from 2028." },
-  { who: "Healthcare professional", field: "Public health", quote: "Safety data will decide adoption: what happens to the plastic's contaminants and additives.", change: "A feedstock safety package is a product requirement, and it comes before any sale." },
+  { who: "Business consultant", field: "Operations, finance", quote: "The disruptive angle could make this more financially viable than existing ways of reducing plastic.", change: "We lead with the business case: free plastic feedstock, and plastic credits as a second income." },
+  { who: "Software engineer", field: "Industrial, data visualization", quote: "Misinformation could scare buyers away, but strong branding and education could help us ride the protein wave.", change: "We sell business to business through feed mills, with safety data first, not a consumer brand." },
+  { who: "Process development engineer", field: "Biotech manufacturing", quote: "Scaling is the hard part: commercial production needs bioreactors of roughly 10,000–100,000 L.", change: "We start with a contract fermenter and build our own plants only from 2028." },
+  { who: "Healthcare professional", field: "Public health", quote: "Safety data will decide adoption: what happens to the plastic’s contaminants and additives.", change: "A feedstock safety package is a product requirement, and it comes before any sale." },
 ];
 
 export const teamProcess = [
