@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ExternalLink } from "./Layout.jsx";
 import { publicFile } from "../data/links.js";
 import {
@@ -325,11 +325,37 @@ function UseOfFunds() {
   );
 }
 
+// Section ids inside the case study; a link to any of them (e.g. masters.html#financials) opens it.
+const innerIds = ["my-role", "value", "product", "go-to-market", "market", "competition", "impact", "financials", "insights", "process", "team"];
+const hashOpens = () => innerIds.includes(decodeURIComponent(window.location.hash.slice(1)));
+
 export default function Ecotein() {
+  const [open, setOpen] = useState(hashOpens);
+  const toggleRef = useRef(null);
+
+  // Open when someone follows a link to a section inside, and scroll to it once it's rendered.
+  useEffect(() => {
+    const onHash = () => {
+      if (!hashOpens()) return;
+      setOpen(true);
+      requestAnimationFrame(() => document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView());
+    };
+    if (hashOpens()) requestAnimationFrame(() => document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView());
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
+
+  const close = () => {
+    setOpen(false);
+    requestAnimationFrame(() => {
+      toggleRef.current?.focus({ preventScroll: true });
+      toggleRef.current?.closest(".ecotein")?.scrollIntoView({ block: "start" });
+    });
+  };
 
   return (
     <div className="wrap eco-frame-wrap">
-    <article className="ecotein" aria-label="Ecotein, the IDSN 599 semester project">
+    <article className={`ecotein${open ? " is-open" : ""}`} aria-label="Ecotein, the IDSN 599 semester project">
       <header className="eco-hero">
         <div className="eco-inner eco-hero-inner">
           <div className="reveal">
@@ -348,6 +374,20 @@ export default function Ecotein() {
         </div>
       </header>
 
+      <button
+        ref={toggleRef}
+        type="button"
+        className="eco-toggle"
+        aria-expanded={open}
+        aria-controls="ecotein-body"
+        onClick={() => (open ? close() : setOpen(true))}
+      >
+        <span className="chev" aria-hidden="true"></span>
+        <span className="eco-toggle-label">{open ? "Hide the case study" : "Show the full case study"}</span>
+        {!open && <span className="eco-toggle-hint">My role, the market, competition, financials and more</span>}
+      </button>
+
+      <div id="ecotein-body" hidden={!open}>
       <Section id="my-role" title="My role" tone="role">
         <ol className="role-list">
           {myRole.map((r) => (
@@ -495,6 +535,12 @@ export default function Ecotein() {
           reviewed every output and checked figures against our sources.
         </p>
       </Section>
+
+      <button type="button" className="eco-toggle eco-toggle-end" aria-controls="ecotein-body" onClick={close}>
+        <span className="chev up" aria-hidden="true"></span>
+        <span className="eco-toggle-label">Hide the case study</span>
+      </button>
+      </div>
     </article>
     </div>
   );

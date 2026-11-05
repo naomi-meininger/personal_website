@@ -897,7 +897,47 @@ html.reveal-ready .poster.reveal:not(.in) {
 .eco-frame-wrap { padding-bottom: 80px; }
 .ecotein { border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--ground); }
 .eco-inner { padding-left: 40px; padding-right: 40px; }
-.ecotein .eco-hero + .eco-section { border-top: 0; }
+/* Arrow toggle under the banner */
+.eco-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: var(--ink);
+  background: var(--ground-raised);
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 18px 40px;
+  cursor: pointer;
+}
+.eco-toggle:hover .eco-toggle-label { color: var(--eco-accent); }
+.eco-toggle:focus-visible { outline: 2px solid var(--eco-accent); outline-offset: -4px; border-radius: 0; }
+.eco-toggle-label { font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.1; }
+.eco-toggle-hint { color: var(--muted); font-size: 1rem; flex-basis: 100%; padding-left: 34px; }
+.chev {
+  width: 20px; height: 20px; align-self: center; flex: none;
+  border-radius: 50%; background: var(--eco-blue);
+  -webkit-mask: none;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+.chev::after {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: 6px; height: 6px;
+  border-right: 2px solid var(--eco-paper); border-bottom: 2px solid var(--eco-paper);
+  transform: translate(-1px, 0) rotate(-45deg);
+}
+.ecotein.is-open > .eco-toggle .chev, .chev.up { transform: rotate(90deg); }
+.chev.up { transform: rotate(-90deg); }
+.eco-toggle-end { border-top: 1px solid var(--line); }
+#ecotein-body > .eco-section:first-child { border-top: 0; }
+
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+@media (max-width: 860px) { .eco-toggle { padding-left: 28px; padding-right: 28px; } }
+@media (max-width: 600px) { .eco-toggle { padding-left: 18px; padding-right: 18px; } .eco-toggle-hint { padding-left: 0; } }
 
 /* ---------- Ecotein case study ---------- */
 /* The project keeps its own brand: electric blue, lime and night, inside the site's type. */
