@@ -134,6 +134,6 @@ export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Sy
 // Sections on the Projects page, in display order. Each project's `group` picks one.
 export const groups = [
   { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology" },
-  { id: "tufts", name: "Tufts University", detail: "B.S. Computer Science" },
+  { id: "tufts", name: "Tufts University", detail: "B.S. Computer Science, minors in Mathematics and Theater" },
   { id: "personal", name: "Personal projects", detail: "Built on my own time" },
 ];
