@@ -8,7 +8,7 @@ export const projects = [
     group: "usc",
     title: "Ecotein",
     skills: [],
-    meta: ["Fall 2026", "IDSN 599 Product Management", "Team of five"],
+    meta: ["Fall 2026", "IDSN 599: Product Management for Challenge-Based Innovation", "Team of five"],
     topics: ["Product"],
     body: [
       "A startup pitch for protein powder made by feeding microbes broken-down plastic, sold first to fish-feed mills in Singapore. I presented our financials and worked on the value proposition.",

@@ -14,7 +14,7 @@ export const courses = [
   {
     id: "idsn-599",
     code: "IDSN 599",
-    name: "Product Management",
+    name: "Special Topics: Product Management for Challenge-Based Innovation",
     term: "Fall 2026",
     summary:
       "A semester working in a five-person product team to take a product from a blank page to an investor pitch: problem research, value proposition, go-to-market, market sizing, competitive analysis and a five-year pro forma.",
