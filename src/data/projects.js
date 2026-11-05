@@ -5,9 +5,10 @@ import { publicFile } from "./links.js";
 export const projects = [
   {
     id: "ecotein",
+    group: "usc",
     title: "Ecotein",
     skills: [],
-    meta: ["Fall 2026", "IDSN 599 Product Management, USC", "Team of five"],
+    meta: ["Fall 2026", "IDSN 599 Product Management", "Team of five"],
     topics: ["Product"],
     body: [
       "A startup pitch for protein powder made by feeding microbes broken-down plastic, sold first to fish-feed mills in Singapore. I presented our financials and worked on the value proposition.",
@@ -16,6 +17,7 @@ export const projects = [
   },
   {
     id: "alarm",
+    group: "tufts",
     title: "Alarm.py",
     skills: ["Python", "Scapy"],
     meta: ["Spring 2024", "Network security", "Python, Scapy"],
@@ -39,6 +41,7 @@ export const projects = [
   },
   {
     id: "end-game-simulator",
+    group: "tufts",
     title: "End Game Simulator",
     skills: [],
     meta: ["Spring 2024", "Sports Analytics", "With Rohun Nanda, Mehr Dewan and Matt Feinberg"],
@@ -53,9 +56,10 @@ export const projects = [
   },
   {
     id: "theta-budget-tracker",
+    group: "personal",
     title: "Theta Budget Tracker",
     skills: ["Python", "Flask", "Selenium", "JavaScript", "jQuery", "HTML", "CSS", "Heroku"],
-    meta: ["Personal project", "Kappa Alpha Theta", "Python, Flask, Selenium"],
+    meta: ["Kappa Alpha Theta", "Python, Flask, Selenium"],
     topics: ["Web apps"],
     body: [
       "As VP of Finance for my sorority, I was the only person who could see the budget, so every board member had to ask me before planning an event. I built a Flask site, hosted on Heroku, that uses Selenium to pull the budget from my account so they could check their own numbers.",
@@ -65,9 +69,10 @@ export const projects = [
   },
   {
     id: "theta-tracker",
+    group: "personal",
     title: "Theta Tracker",
     skills: ["Heroku"],
-    meta: ["Personal project", "Kappa Alpha Theta"],
+    meta: ["Kappa Alpha Theta"],
     topics: ["Web apps"],
     body: [
       "Members earn points for optional events and lose them for unexcused absences, and you need zero or more to attend events like formal. Points are private, so a shared spreadsheet wasn't an option, and members had to ask an officer for their total.",
@@ -78,6 +83,7 @@ export const projects = [
   },
   {
     id: "e4u",
+    group: "tufts",
     title: "E4U: Exercise for You",
     skills: ["MongoDB", "Heroku"],
     meta: ["Web Programming", "Team of four", "MongoDB"],
@@ -89,6 +95,7 @@ export const projects = [
   },
   {
     id: "image-compressor",
+    group: "tufts",
     title: "Image compressor and decompressor",
     skills: ["C"],
     meta: ["Fall 2022", "Machine Structure and Assembly-Language Programming", "With Stephen Chakoudian"],
@@ -107,6 +114,7 @@ export const projects = [
   },
   {
     id: "music-and-math",
+    group: "tufts",
     title: "Music and math",
     skills: [],
     meta: ["Spring 2022", "Mathematical Modeling", "With Scott Fullenbaum and Grace Hindermann"],
@@ -122,3 +130,10 @@ export const projects = [
 ];
 
 export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Systems"];
+
+// Sections on the Projects page, in display order. Each project's `group` picks one.
+export const groups = [
+  { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology" },
+  { id: "tufts", name: "Tufts University", detail: "B.S. Computer Science" },
+  { id: "personal", name: "Personal projects", detail: "Built on my own time" },
+];

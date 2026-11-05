@@ -434,6 +434,12 @@ main { display: block; }
   margin-top: 6px;
 }
 
+.project-group { padding: 8px 0 40px; }
+.group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; padding: 40px 0 8px; border-bottom: 3px solid var(--ink); }
+.group-head h2 { margin: 0; font-size: 2.6rem; }
+.group-head p { margin: 0; color: var(--muted); font-style: italic; }
+.group-head + .entry { border-top: 0; }
+
 .status {
   display: inline-block;
   font-size: 0.95rem;
@@ -1266,7 +1272,7 @@ html.reveal-ready .poster.reveal:not(.in) {
   .arch { justify-self: start; max-width: 300px; order: -1; }
   .split,
   .entry,
-  .skill-group { grid-template-columns: 1fr; gap: 14px; }
+  .skill-group { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .entry { padding: 40px 0; }
   .feature { grid-template-columns: 1fr; gap: 36px; }
   .poster { max-width: 380px; }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
-import { projects, topics } from "../data/projects.js";
+import { projects, topics, groups } from "../data/projects.js";
 import SkillTags from "../components/SkillTags.jsx";
 
 // Dim the word "redacted" so the sample output reads like real tool output.
@@ -61,7 +61,7 @@ function Projects() {
     <Layout current="projects">
       <div className="wrap page-intro">
         <h1 className="page-title reveal">Projects</h1>
-        <p className="lede reveal">Things I've built in class, for my sorority and on my own, newest first.</p>
+        <p className="lede reveal">Things I've built at USC, at Tufts and on my own, newest first in each.</p>
         <div className="filters reveal" role="group" aria-label="Filter projects by topic">
           {["All", ...topics].map((t) => {
             const count = t === "All" ? projects.length : projects.filter((p) => p.topics.includes(t)).length;
@@ -74,8 +74,22 @@ function Projects() {
         </div>
       </div>
 
-      <div className="wrap" aria-live="polite">
-        {shown.map((project) => <Project key={project.title} project={project} />)}
+      <div aria-live="polite">
+        {groups.map((g) => {
+          const items = shown.filter((p) => p.group === g.id);
+          if (items.length === 0) return null;
+          return (
+            <section key={g.id} className="project-group" aria-labelledby={`group-${g.id}`}>
+              <div className="wrap">
+                <div className="group-head reveal">
+                  <h2 id={`group-${g.id}`}>{g.name}</h2>
+                  <p>{g.detail}</p>
+                </div>
+                {items.map((project) => <Project key={project.title} project={project} />)}
+              </div>
+            </section>
+          );
+        })}
       </div>
     </Layout>
   );
