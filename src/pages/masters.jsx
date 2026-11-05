@@ -9,11 +9,11 @@ const caseStudies = { ecotein: Ecotein };
 function Course({ course }) {
   const CaseStudy = course.caseStudy ? caseStudies[course.caseStudy] : null;
   return (
-    <section className="course" id={course.id} aria-labelledby={`${course.id}-title`}>
-      <div className="wrap course-head reveal">
-        <p className="course-meta">{course.code}, {course.term}</p>
-        <h2 id={`${course.id}-title`} className="course-title">{course.name}</h2>
-        <p className="lede">{course.summary}</p>
+    <article className="course" id={course.id} aria-labelledby={`${course.id}-title`}>
+      <div className="course-head reveal">
+        <p className="course-meta">{course.code}</p>
+        <h3 id={`${course.id}-title`} className="course-title">{course.name}</h3>
+        <p>{course.summary}</p>
         {course.highlights?.length > 0 && (
           <ul className="course-highlights">{course.highlights.map((h) => <li key={h}>{h}</li>)}</ul>
         )}
@@ -21,14 +21,20 @@ function Course({ course }) {
           <div className="entry-links">{course.links.map((l) => <ExternalLink key={l.href} href={l.href}>{l.label}</ExternalLink>)}</div>
         )}
       </div>
-      {CaseStudy && (
-        <>
-          <div className="wrap"><p className="project-label">Semester project</p></div>
-          <CaseStudy />
-        </>
-      )}
-    </section>
+      {CaseStudy && <CaseStudy />}
+    </article>
   );
+}
+
+// Group classes by term, keeping the order they're listed in masters.js (newest first).
+function byTerm(list) {
+  const terms = [];
+  for (const c of list) {
+    let t = terms.find((x) => x.term === c.term);
+    if (!t) terms.push((t = { term: c.term, courses: [] }));
+    t.courses.push(c);
+  }
+  return terms;
 }
 
 function Masters() {
@@ -40,24 +46,20 @@ function Masters() {
         <p className="reveal">{program.intro}</p>
       </div>
 
-      <div className="wrap course-index-wrap">
-        <nav className="course-index reveal" aria-labelledby="classes-heading">
-          <h2 id="classes-heading">Classes</h2>
-          <ul>
-            {courses.map((c) => (
-              <li key={c.id}>
-                <a href={`#${c.id}`}>
-                  <span className="ci-code">{c.code}</span>
-                  <strong>{c.name}</strong>
-                  <span className="ci-term">{c.term}{c.caseStudy ? ", with semester project" : ""}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="muted">More classes will be added as the program goes on.</p>
-        </nav>
-      </div>
-      {courses.map((c) => <Course key={c.id} course={c} />)}
+      {byTerm(courses).map((t) => {
+        const id = `term-${t.term.toLowerCase().replace(/\s+/g, "-")}`;
+        return (
+          <section key={t.term} className="term" aria-labelledby={id}>
+            <div className="wrap">
+              <div className="group-head reveal">
+                <h2 id={id}>{t.term}</h2>
+                <p>{t.courses.length} {t.courses.length === 1 ? "class" : "classes"}</p>
+              </div>
+              {t.courses.map((c) => <Course key={c.id} course={c} />)}
+            </div>
+          </section>
+        );
+      })}
     </Layout>
   );
 }

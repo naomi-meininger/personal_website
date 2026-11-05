@@ -354,8 +354,29 @@ export default function Ecotein() {
   };
 
   return (
-    <div className="wrap eco-frame-wrap">
+    <div className={`eco-frame-wrap${open ? " is-open" : ""}`}>
     <article className={`ecotein${open ? " is-open" : ""}`} aria-label="Ecotein, the IDSN 599 semester project">
+      <button
+        ref={toggleRef}
+        type="button"
+        className="eco-summary"
+        aria-expanded={open}
+        aria-controls="ecotein-body"
+        onClick={() => (open ? close() : setOpen(true))}
+      >
+        <span className="eco-mini" aria-hidden="true"><DotFish className="eco-mini-fish" /></span>
+        <span className="eco-summary-text">
+          <span className="eco-summary-kicker">Semester project, Product Team 10</span>
+          <strong>Ecotein: plastic in, protein out</strong>
+          <span className="eco-summary-desc">A startup pitch for protein powder made from plastic waste. My role, the market, competition, financials and more.</span>
+        </span>
+        <span className="eco-summary-action">
+          <span className="chev" aria-hidden="true"></span>
+          {open ? "Hide" : "Open"}
+        </span>
+      </button>
+
+      <div id="ecotein-body" hidden={!open}>
       <header className="eco-hero">
         <div className="eco-inner eco-hero-inner">
           <div className="reveal">
@@ -373,21 +394,6 @@ export default function Ecotein() {
           <DotFish className="eco-fish" />
         </div>
       </header>
-
-      <button
-        ref={toggleRef}
-        type="button"
-        className="eco-toggle"
-        aria-expanded={open}
-        aria-controls="ecotein-body"
-        onClick={() => (open ? close() : setOpen(true))}
-      >
-        <span className="chev" aria-hidden="true"></span>
-        <span className="eco-toggle-label">{open ? "Hide the case study" : "Show the full case study"}</span>
-        {!open && <span className="eco-toggle-hint">My role, the market, competition, financials and more</span>}
-      </button>
-
-      <div id="ecotein-body" hidden={!open}>
       <Section id="my-role" title="My role" tone="role">
         <ol className="role-list">
           {myRole.map((r) => (
