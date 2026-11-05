@@ -170,5 +170,3 @@ export const teamProcess = [
   { title: "Align", text: "We shared findings and settled on the problem and how to frame it." },
   { title: "Ideate and iterate", text: "We kept working together to develop a research-backed solution." },
 ];
-
-export const mindMaps = "https://figma.com/board/9s9oKDsggISmAa9tef0xR7";

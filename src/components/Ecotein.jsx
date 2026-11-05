@@ -4,7 +4,7 @@ import { publicFile } from "../data/links.js";
 import {
   team, myRole, challenges, steps, productSpec, drivers, pathway, market, marketSources,
   positioning, comparisonColumns, comparison, priceBenchmark, impact, financials,
-  unitEconomics, sensitivity, stages, useOfFunds, proForma, insights, teamProcess, mindMaps,
+  unitEconomics, sensitivity, stages, useOfFunds, proForma, insights, teamProcess,
 } from "../data/ecotein.js";
 
 const deckPdf = publicFile("ecotein-deck.pdf");
@@ -357,7 +357,6 @@ export default function Ecotein() {
         <ol className="eco-steps reveal">
           {teamProcess.map((s, i) => <li key={i}><strong>{s.title}</strong><span>{s.text}</span></li>)}
         </ol>
-        <p className="reveal"><ExternalLink href={mindMaps}>See our mind maps in Figma</ExternalLink></p>
       </Section>
 
       <Section id="team" title="Product Team 10">
