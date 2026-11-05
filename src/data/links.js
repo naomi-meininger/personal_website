@@ -10,6 +10,7 @@ export const links = {
 
 export const pages = [
   { id: "home", label: "About", href: "index.html" },
+  { id: "masters", label: "Master's Program", href: "masters.html" },
   { id: "projects", label: "Projects", href: "projects.html" },
   { id: "skills", label: "Skills", href: "skills.html" },
   { id: "ventures", label: "Theater & Teaching", href: "ventures.html" },

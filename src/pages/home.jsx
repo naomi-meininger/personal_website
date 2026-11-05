@@ -14,9 +14,9 @@ function Home() {
           <div className="reveal">
             <h1 className="marquee">Naomi<br />Meininger</h1>
             <p className="lede">
-              I'm a software engineer at Disney Streaming and a master's student at USC, studying integrated design,
-              business and technology. Before that I studied computer science at Tufts, with minors in mathematics
-              and theater.
+              I'm a software engineer at Disney Streaming and a master's student at USC in Integrated Design,
+              Business, and Technology. I studied computer science at Tufts, with minors in mathematics and theater,
+              and graduated magna cum laude in 2024.
             </p>
             <p className="muted">Outside of work I'm an avid musical theater fan, and in 2023 I directed my first show.</p>
             <div className="actions">
@@ -66,6 +66,7 @@ function Home() {
         <div className="wrap split">
           <h2 id="more" className="reveal">More</h2>
           <ul className="next-links">
+            <li className="reveal"><a href="masters.html"><strong>Master's Program</strong><span>Ecotein, a plastic-to-protein startup from my product management class</span></a></li>
             <li className="reveal"><a href="projects.html"><strong>Projects</strong><span>Network security, sports analytics, image compression and more</span></a></li>
             <li className="reveal"><a href="skills.html"><strong>Skills</strong><span>Languages, frameworks and tools I work with</span></a></li>
             <li className="reveal"><a href="ventures.html"><strong>Theater &amp; Teaching</strong><span>Directing <i>tick, tick... BOOM!</i> and teaching a course on Disney</span></a></li>

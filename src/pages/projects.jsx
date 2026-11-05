@@ -42,7 +42,9 @@ function Project({ project }) {
 
         {(project.links.length > 0 || project.status) && (
           <div className="entry-links">
-            {project.links.map((link) => <ExternalLink key={link.href} href={link.href}>{link.label}</ExternalLink>)}
+            {project.links.map((link) => link.internal
+              ? <a key={link.href} className="text-link" href={link.href}>{link.label}</a>
+              : <ExternalLink key={link.href} href={link.href}>{link.label}</ExternalLink>)}
             {project.status && <span className="status">{project.status}</span>}
           </div>
         )}

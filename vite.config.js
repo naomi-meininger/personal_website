@@ -13,6 +13,7 @@ export default defineConfig({
         projects: resolve(__dirname, "projects.html"),
         skills: resolve(__dirname, "skills.html"),
         ventures: resolve(__dirname, "ventures.html"),
+        masters: resolve(__dirname, "masters.html"),
       },
     },
   },

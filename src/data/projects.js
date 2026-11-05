@@ -4,6 +4,17 @@ import { publicFile } from "./links.js";
 // Newest first. `topics` drive the filter on the Projects page.
 export const projects = [
   {
+    id: "ecotein",
+    title: "Ecotein",
+    skills: [],
+    meta: ["Fall 2026", "IDSN 599 Product Management, USC", "Team of five"],
+    topics: ["Product"],
+    body: [
+      "A startup pitch for protein powder made by feeding microbes broken-down plastic, sold first to fish-feed mills in Singapore. I presented our financials and worked on the value proposition.",
+    ],
+    links: [{ label: "Read the case study", href: "masters.html#idsn-599", internal: true }],
+  },
+  {
     id: "alarm",
     title: "Alarm.py",
     skills: ["Python", "Scapy"],
@@ -110,4 +121,4 @@ export const projects = [
   },
 ];
 
-export const topics = ["Security", "Web apps", "Data & modeling", "Systems"];
+export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Systems"];
