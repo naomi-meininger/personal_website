@@ -144,13 +144,13 @@ export const stages = [
   { amount: "$36M", name: "Stage 2", years: "2028 to 2030", goal: "Plant 2 and profitability", proves: ["Supply contracts with feed mills", "Positive EBITDA in 2030"] },
 ];
 
-// Stage 1 use of funds; `dots` out of 100 for the dot grid
+// Stage 1 use of funds; `share` is % of gross uses (from the deck), `dots` out of 100 for the dot grid
 export const useOfFunds = [
-  { label: "Plant 1 build", amount: "$10.50M", dots: 82, tone: "lime" },
-  { label: "Team", amount: "$0.64M", dots: 5, tone: "periwinkle" },
-  { label: "Regulatory and R&D", amount: "$0.59M", dots: 5, tone: "paper" },
-  { label: "Plant costs and pilots", amount: "$0.58M", dots: 5, tone: "gray" },
-  { label: "Marketing and legal", amount: "$0.41M", dots: 3, tone: "orange" },
+  { label: "Plant 1 build", amount: "$10.50M", share: 82.5, dots: 82, tone: "lime" },
+  { label: "Team", amount: "$0.64M", share: 5.0, dots: 5, tone: "periwinkle" },
+  { label: "Regulatory and R&D", amount: "$0.59M", share: 4.6, dots: 5, tone: "paper" },
+  { label: "Plant costs and pilots", amount: "$0.58M", share: 4.6, dots: 5, tone: "gray" },
+  { label: "Marketing and legal", amount: "$0.41M", share: 3.2, dots: 3, tone: "orange" },
 ];
 
 export const proForma =

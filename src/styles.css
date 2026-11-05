@@ -869,7 +869,7 @@ html.reveal-ready .poster.reveal:not(.in) {
 
 /* ---------- Master's Program page ---------- */
 
-.course { padding-top: 24px; border-top: 1px solid var(--line); }
+.course { padding-top: 8px; border-top: 1px solid var(--line); scroll-margin-top: 0; }
 .course-head { padding-top: 48px; padding-bottom: 40px; }
 .course-meta { color: var(--muted); font-style: italic; margin: 0 0 6px; }
 .course-title { font-weight: 800; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 0.92; margin-bottom: 18px; }
@@ -878,15 +878,36 @@ html.reveal-ready .poster.reveal:not(.in) {
 .course-index ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 20px 0 0; padding: 0; }
 .course-index a { text-decoration: underline; text-decoration-color: var(--velvet); text-underline-offset: 4px; }
 
+/* Class index */
+.course-index-wrap { padding-bottom: 56px; }
+.course-index { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 8px 40px; }
+.course-index h2 { margin: 0; padding-top: 6px; }
+.course-index ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.course-index a { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) auto; align-items: baseline; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; }
+.course-index a:hover strong { color: var(--velvet); }
+.ci-code { color: var(--muted); font-style: italic; }
+.course-index strong { font-family: var(--display); font-size: 1.5rem; line-height: 1.1; }
+.ci-term { color: var(--muted); font-size: 0.95rem; }
+.course-index .muted { grid-column: 2; margin: 4px 0 0; font-size: 0.95rem; }
+
+.project-label { max-width: none; font-family: var(--display); font-weight: 700; font-size: 1.2rem; margin: 0 0 12px; display: flex; align-items: center; gap: 12px; }
+.project-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+/* The case study sits in its own frame, inset from the page */
+.eco-frame-wrap { padding-bottom: 80px; }
+.ecotein { border: 1.5px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--ground); }
+.eco-inner { padding-left: 40px; padding-right: 40px; }
+.ecotein .eco-hero + .eco-section { border-top: 0; }
+
 /* ---------- Ecotein case study ---------- */
 /* The project keeps its own brand: electric blue, lime and night, inside the site's type. */
 
 .ecotein { --on-dark: var(--eco-paper); }
 
-.eco-hero { background: var(--eco-blue); color: var(--on-dark); padding: 64px 0 56px; }
+.eco-hero { background: var(--eco-blue); color: var(--on-dark); padding: 48px 0 44px; }
 .eco-hero-inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 32px; align-items: center; }
 .eco-course { color: var(--eco-lime); margin: 0 0 4px; font-style: italic; }
-.eco-wordmark { font-weight: 800; font-size: clamp(5rem, 15vw, 10rem); line-height: 0.8; letter-spacing: -0.01em; margin: 0; }
+.eco-wordmark { font-weight: 800; font-size: clamp(4.2rem, 11vw, 8rem); line-height: 0.8; letter-spacing: -0.01em; margin: 0; }
 .eco-tagline { font-family: var(--display); font-weight: 600; font-size: 1.9rem; color: var(--eco-lime); margin: 14px 0 18px; }
 .eco-lede { font-size: 1.2rem; max-width: 40ch; }
 .eco-button { background: var(--eco-lime); color: #0d0e15; }
@@ -905,8 +926,8 @@ html.reveal-ready .poster.reveal:not(.in) {
   50% { transform: translate(-10px, -4px); }
 }
 
-.eco-section { padding: 64px 0; border-top: 1px solid var(--line); }
-.eco-split { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 40px; }
+.eco-section { padding: 56px 0; border-top: 1px solid var(--line); }
+.eco-split { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 36px; }
 .eco-head h3 { font-size: 2rem; line-height: 1.02; }
 .eco-body { min-width: 0; }
 .eco-body.eco-body > * + * { margin-top: 24px; }
@@ -1015,6 +1036,21 @@ html.reveal-ready .poster.reveal:not(.in) {
 .posquads dd { margin: 2px 0 0; font-family: var(--display); font-weight: 700; font-size: 1.3rem; }
 .posquads .us dd { color: var(--eco-accent); }
 
+/* Linked hover highlights (see useHot in Ecotein.jsx) */
+.has-hot .is-cold { opacity: 0.32; }
+.is-hot, .is-cold { transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s; }
+.tam-circles > div, .tam-list > div, .pos, .eco-table tbody tr, .hbars li, .stack span, .stack-legend li, .dotgrid span, .funds-legend li { cursor: pointer; }
+.tam-circles > div.is-hot { box-shadow: 0 0 0 4px var(--eco-paper); }
+.tam-list > div { transition: opacity 0.15s; }
+.tam-list > div.is-hot { border-left-width: 6px; }
+.pos.is-hot { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5); z-index: 1; }
+.eco-table tbody tr.is-hot:not(.us) { background: var(--ground-raised); }
+.eco-table.has-hot tbody tr.is-cold { opacity: 0.45; }
+.stack span.is-hot { box-shadow: inset 0 0 0 3px var(--eco-lime); }
+.dotgrid span.is-hot { transform: scale(1.15); }
+.readout { min-height: 1.6em; margin: 10px 0 0; }
+.readout strong { font-weight: 600; }
+
 /* Comparison table */
 .table-scroll { overflow-x: auto; }
 .eco-table { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 1rem; }
@@ -1047,12 +1083,45 @@ html.reveal-ready .poster.reveal:not(.in) {
 .key.rev { background: var(--eco-peri); }
 .key.ebitda { background: var(--eco-ebitda); margin-left: 10px; }
 .chart-scroll { overflow-x: auto; }
-.fin-chart { width: 100%; min-width: 520px; display: block; font-family: var(--text); }
+.fin-chart { width: 100%; display: block; font-family: var(--text); }
 .fin-chart text { font-size: 13px; fill: var(--ink); font-variant-numeric: tabular-nums; }
 .fin-chart .year { font-family: var(--display); font-weight: 700; font-size: 15px; }
 .fin-chart .axis { stroke: var(--muted); stroke-width: 1; }
 .fin-chart .rev rect { fill: var(--eco-peri); }
 .fin-chart .ebitda rect { fill: var(--eco-ebitda); }
+
+/* Hover / focus a year */
+.fin-wrap { position: relative; min-width: 520px; }
+.fin-wrap .fin-chart { min-width: 0; }
+.fin-year { cursor: pointer; outline: none; }
+.fin-year .hit { fill: transparent; }
+.fin-year.is-active .hit { fill: var(--ground-raised); }
+.fin-year:focus-visible .hit { stroke: var(--eco-accent); stroke-width: 2; }
+.fin-chart g.rev, .fin-chart g.ebitda, .fin-chart .year { transition: opacity 0.15s; }
+.fin-chart.has-active .fin-year:not(.is-active) g,
+.fin-chart.has-active .fin-year:not(.is-active) .year { opacity: 0.3; }
+
+.fin-tip {
+  position: absolute;
+  top: 8px;
+  z-index: 2;
+  min-width: 12.5rem;
+  background: var(--ink);
+  color: var(--ground);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  pointer-events: none;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.5);
+}
+.fin-tip.left { transform: translateX(-100%); }
+.fin-tip p { margin: 0; display: flex; align-items: center; gap: 6px; }
+.fin-tip b { margin-left: auto; padding-left: 14px; font-variant-numeric: tabular-nums; }
+.fin-tip .key { margin: 0; }
+.fin-tip-year { font-family: var(--display); font-weight: 700; font-size: 1.2rem; margin-bottom: 4px !important; }
+.fin-tip-note { margin-top: 6px !important; padding-top: 6px; border-top: 1px solid color-mix(in srgb, var(--ground) 25%, transparent); font-style: italic; opacity: 0.85; }
+
 
 /* Unit economics stacked bar */
 .stack { display: flex; height: 56px; border-radius: 6px; overflow: hidden; }
@@ -1116,6 +1185,9 @@ html.reveal-ready .poster.reveal:not(.in) {
 .team .muted { font-size: 0.95rem; }
 
 @media (max-width: 860px) {
+  .course-index { grid-template-columns: 1fr; }
+  .course-index .muted { grid-column: 1; }
+  .eco-inner { padding-left: 28px; padding-right: 28px; }
   .eco-split { grid-template-columns: 1fr; gap: 18px; }
   .eco-hero-inner { grid-template-columns: 1fr; }
   .eco-fish { justify-self: start; max-width: 260px; }
@@ -1126,7 +1198,10 @@ html.reveal-ready .poster.reveal:not(.in) {
 }
 
 @media (max-width: 600px) {
-  .eco-section { padding: 48px 0; }
+  .course-index a { grid-template-columns: 1fr; gap: 2px; }
+  .ecotein { border-radius: 12px; }
+  .eco-inner { padding-left: 18px; padding-right: 18px; }
+  .eco-section { padding: 40px 0; }
   .eco-hero { padding: 44px 0 40px; }
   .eco-stats, .stages, .sens-out { grid-template-columns: 1fr; }
   .posmap { display: none; }

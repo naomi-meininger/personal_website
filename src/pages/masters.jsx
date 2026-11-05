@@ -21,7 +21,12 @@ function Course({ course }) {
           <div className="entry-links">{course.links.map((l) => <ExternalLink key={l.href} href={l.href}>{l.label}</ExternalLink>)}</div>
         )}
       </div>
-      {CaseStudy && <CaseStudy />}
+      {CaseStudy && (
+        <>
+          <div className="wrap"><p className="project-label">Semester project</p></div>
+          <CaseStudy />
+        </>
+      )}
     </section>
   );
 }
@@ -33,11 +38,24 @@ function Masters() {
         <h1 className="page-title reveal">Current: Master's Program</h1>
         <p className="lede reveal">{program.degree}, {program.school}. Started {program.started}.</p>
         <p className="reveal">{program.intro}</p>
-        {courses.length > 1 && (
-          <nav className="course-index reveal" aria-label="Classes">
-            <ul>{courses.map((c) => <li key={c.id}><a href={`#${c.id}`}>{c.code}: {c.name}</a></li>)}</ul>
-          </nav>
-        )}
+      </div>
+
+      <div className="wrap course-index-wrap">
+        <nav className="course-index reveal" aria-labelledby="classes-heading">
+          <h2 id="classes-heading">Classes</h2>
+          <ul>
+            {courses.map((c) => (
+              <li key={c.id}>
+                <a href={`#${c.id}`}>
+                  <span className="ci-code">{c.code}</span>
+                  <strong>{c.name}</strong>
+                  <span className="ci-term">{c.term}{c.caseStudy ? ", with semester project" : ""}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="muted">More classes will be added as the program goes on.</p>
+        </nav>
       </div>
       {courses.map((c) => <Course key={c.id} course={c} />)}
     </Layout>

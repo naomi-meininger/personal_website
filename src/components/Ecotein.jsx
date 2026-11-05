@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ExternalLink } from "./Layout.jsx";
 import { publicFile } from "../data/links.js";
 import {
@@ -30,6 +30,25 @@ function DotFish({ className }) {
   );
 }
 
+// Linked highlighting: hover with a mouse, or tap on touch screens (tap again to clear).
+// Everything a highlight reveals is also in the visible text, so it's an enhancement only.
+function useHot() {
+  const [hot, setHot] = useState(null);
+  const pointer = useRef(null);
+  const bind = (key) => ({
+    onPointerEnter: (e) => { if (e.pointerType === "mouse") setHot(key); },
+    onPointerLeave: (e) => { if (e.pointerType === "mouse") setHot(null); },
+    onPointerDown: (e) => { pointer.current = e.pointerType; },
+    onClick: () => {
+      const mouse = pointer.current === "mouse";
+      pointer.current = null;
+      setHot((h) => (mouse || h !== key ? key : null));
+    },
+  });
+  const cls = (key) => (hot === null ? "" : hot === key ? " is-hot" : " is-cold");
+  return { hot, bind, cls };
+}
+
 function MineTag({ children }) {
   return <span className="eco-mine">{children}</span>;
 }
@@ -37,7 +56,7 @@ function MineTag({ children }) {
 function Section({ id, title, mine, children, tone }) {
   return (
     <section className={`eco-section${tone ? ` eco-${tone}` : ""}`} aria-labelledby={id}>
-      <div className="wrap eco-split">
+      <div className="eco-inner eco-split">
         <div className="eco-head reveal">
           <h3 id={id}>{title}</h3>
           {mine && <MineTag>{mine}</MineTag>}
@@ -58,36 +77,89 @@ function Pictogram({ filled, total, shape }) {
   );
 }
 
+const millions = (v) => `${v < 0 ? "−" : ""}$${Math.abs(v).toFixed(2)}M`;
+
+// What the hover card says about a year, beyond the two numbers.
+function yearNote(f, prev) {
+  if (f.ebitda > 0 && (!prev || prev.ebitda <= 0)) return "First profitable year";
+  if (prev && prev.revenue > 0) {
+    const growth = f.revenue / prev.revenue;
+    return `Revenue ${growth >= 2 ? `${growth.toFixed(1)}×` : `up ${Math.round((growth - 1) * 100)}%`} on ${prev.year}`;
+  }
+  return "First year of sales";
+}
+
 function FinancialChart() {
   // One scale for every bar and label: $1M = 8 units.
-  const k = 8, zeroY = 36 + 21.83 * k, groupW = 124, barW = 36;
+  const k = 8, zeroY = 36 + 21.83 * k, groupW = 124, barW = 36, viewW = 640;
+  const [active, setActive] = useState(null);
+  // Focus from a tap or click shouldn't open the card on its own; the click handles that.
+  const pointerType = useRef(null);
+  const f = active === null ? null : financials[active];
+
   return (
     <div className="chart-scroll">
-      <svg className="fin-chart" viewBox="0 0 640 290" role="img"
-        aria-label="Revenue and EBITDA by year in millions of dollars. FY2027 revenue 0.13, EBITDA −0.73. FY2028 1.07 and −1.07. FY2029 2.89 and −1.24. FY2030 9.44 and 0.42. FY2031 21.83 and 6.20.">
-        <line x1="0" x2="640" y1={zeroY} y2={zeroY} className="axis" />
-        {financials.map((f, i) => {
-          const x = 20 + i * groupW;
-          const bar = (v, dx, cls) => {
-            const h = Math.max(Math.abs(v) * k, 1.5);
-            const y = v >= 0 ? zeroY - h : zeroY;
-            const ly = v >= 0 ? y - 8 : y + h + 16;
+      <div className="fin-wrap" onPointerLeave={(e) => e.pointerType === "mouse" && setActive(null)}>
+        <svg className={`fin-chart${active !== null ? " has-active" : ""}`} viewBox={`0 0 ${viewW} 290`} role="group"
+          aria-label="Revenue and EBITDA by year, in millions of dollars. Focus a year for details.">
+          <line x1="0" x2={viewW} y1={zeroY} y2={zeroY} className="axis" />
+          {financials.map((row, i) => {
+            const x = 20 + i * groupW;
+            const bar = (v, dx, cls) => {
+              const h = Math.max(Math.abs(v) * k, 1.5);
+              const y = v >= 0 ? zeroY - h : zeroY;
+              const ly = v >= 0 ? y - 8 : y + h + 16;
+              return (
+                <g className={cls}>
+                  <rect x={x + dx} y={y} width={barW} height={h} rx="3" />
+                  <text x={x + dx + barW / 2} y={ly} textAnchor="middle">{v.toFixed(2).replace("-", "−")}</text>
+                </g>
+              );
+            };
             return (
-              <g className={cls}>
-                <rect x={x + dx} y={y} width={barW} height={h} rx="3" />
-                <text x={x + dx + barW / 2} y={ly} textAnchor="middle">{v.toFixed(2).replace("-", "−")}</text>
+              <g
+                key={row.year}
+                className={`fin-year${active === i ? " is-active" : ""}`}
+                tabIndex={0}
+                role="button"
+                aria-pressed={active === i}
+                aria-label={`${row.year}: revenue ${millions(row.revenue)}, EBITDA ${millions(row.ebitda)}`}
+                onPointerEnter={(e) => e.pointerType === "mouse" && setActive(i)}
+                onPointerDown={(e) => { pointerType.current = e.pointerType; }}
+                onClick={() => {
+                  const viaMouse = pointerType.current === "mouse";
+                  pointerType.current = null;
+                  setActive(viaMouse || active !== i ? i : null);
+                }}
+                onFocus={() => { if (!pointerType.current) setActive(i); }}
+                onBlur={() => setActive(null)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape") { setActive(null); e.currentTarget.blur(); }
+                  if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive(active === i ? null : i); }
+                }}
+              >
+                <rect className="hit" x={x - 14} y="0" width={groupW - 8} height="290" />
+                {bar(row.revenue, 0, "rev")}
+                {bar(row.ebitda, barW + 8, "ebitda")}
+                <text x={x + barW + 4} y="280" textAnchor="middle" className="year">{row.year}</text>
               </g>
             );
-          };
-          return (
-            <g key={f.year}>
-              {bar(f.revenue, 0, "rev")}
-              {bar(f.ebitda, barW + 8, "ebitda")}
-              <text x={x + barW + 4} y="280" textAnchor="middle" className="year">{f.year}</text>
-            </g>
-          );
-        })}
-      </svg>
+          })}
+        </svg>
+
+        {f && (
+          <div
+            className={`fin-tip${active >= 3 ? " left" : ""}`}
+            style={{ left: `${((20 + active * groupW + (active >= 3 ? -14 : barW * 2 + 22)) / viewW) * 100}%` }}
+            aria-hidden="true"
+          >
+            <p className="fin-tip-year">{f.year}</p>
+            <p><span className="key rev"></span>Revenue <b>{millions(f.revenue)}</b></p>
+            <p><span className="key ebitda"></span>EBITDA <b>{millions(f.ebitda)}</b></p>
+            <p className="fin-tip-note">{yearNote(f, financials[active - 1])}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -122,17 +194,146 @@ function Sensitivity() {
   );
 }
 
-export default function Ecotein() {
-  const unitTotal = unitEconomics.reduce((s, u) => s + u.value, 0);
+function MarketSize() {
+  const { bind, cls, hot } = useHot();
+  return (
+    <div className={`tam reveal${hot ? " has-hot" : ""}`}>
+      <div className="tam-circles" aria-hidden="true">
+        {market.map((m) => (
+          <div key={m.key} className={`c-${m.key.toLowerCase()}${cls(m.key)}`} {...bind(m.key)}><span>{m.key}</span></div>
+        ))}
+      </div>
+      <dl className="tam-list">
+        {market.map((m) => (
+          <div key={m.key} className={cls(m.key).trim()} {...bind(m.key)}>
+            <dt><span className="tam-key">{m.key}</span> {m.value}</dt>
+            <dd><span className="tam-label">{m.label}.</span> {m.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  );
+}
+
+function Competition() {
+  const { bind, cls, hot } = useHot();
   const maxPrice = Math.max(...priceBenchmark.map((p) => p.value));
-  const dots = useOfFunds.flatMap((u) => Array.from({ length: u.dots }, () => u.tone));
+  const ours = priceBenchmark.find((p) => p.us).value;
+  const price = priceBenchmark.find((p) => p.name === hot);
+  return (
+    <>
+      <div className={`posmap reveal${hot ? " has-hot" : ""}`} role="img" aria-label="Positioning map. Ecotein sits furthest toward renewable materials and high supply reliability, ahead of Solar Foods. Fishmeal, soybean meal and Unibio use virgin materials; poultry and insect meal are renewable but less reliable.">
+        <span className="ax ax-top">High supply reliability</span>
+        <span className="ax ax-bottom">Low supply reliability</span>
+        <span className="ax ax-left">Virgin materials</span>
+        <span className="ax ax-right">Renewable materials</span>
+        {positioning.map((p) => (
+          <span key={p.name} className={`pos${p.us ? " us" : ""}${cls(p.name)}`} {...bind(p.name)}
+            style={{ left: `${50 + p.x * 42}%`, top: `${50 - p.y * 40}%` }}>{p.name}</span>
+        ))}
+      </div>
+
+      <dl className="posquads reveal">
+        <div className="us"><dt>Renewable materials, high supply reliability</dt><dd>Ecotein, Solar Foods</dd></div>
+        <div><dt>Renewable materials, low supply reliability</dt><dd>Insect meal, poultry meal</dd></div>
+        <div><dt>Virgin materials, low supply reliability</dt><dd>Unibio, soybean meal, fishmeal</dd></div>
+      </dl>
+
+      <div className="table-scroll reveal">
+        <table className={`eco-table${hot ? " has-hot" : ""}`}>
+          <caption>Where Ecotein stands today</caption>
+          <thead><tr><th scope="col"><span className="visually-hidden">Product</span></th>{comparisonColumns.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
+          <tbody>
+            {comparison.map((r) => (
+              <tr key={r.name} className={`${r.us ? "us" : ""}${cls(r.name)}`} {...bind(r.name)}>
+                <th scope="row">{r.name}</th>
+                {r.cells.map((c, i) => <td key={i} className={c.startsWith("Yes") ? "yes" : c === "Partly" ? "" : "no"}>{c}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="eco-note">*A hypothesis: gate fees are off in our base case.</p>
+
+      <h4 className="reveal">We compete with fishmeal, not soy</h4>
+      <ul className={`hbars reveal${hot ? " has-hot" : ""}`} aria-label="Cost per kilogram of protein, US dollars">
+        {priceBenchmark.map((p) => (
+          <li key={p.name} className={`${p.us ? "us" : ""}${cls(p.name)}`} {...bind(p.name)}>
+            <span className="hb-name">{p.name}</span>
+            <span className="hb-track"><span className="hb-bar" style={{ width: `${(p.value / maxPrice) * 100}%` }}></span></span>
+            <span className="hb-val">${p.value.toFixed(2)}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="eco-note readout" aria-hidden="true">
+        {price && !price.us
+          ? `${price.name}: $${price.value.toFixed(2)} per kg of protein, $${Math.abs(price.value - ours).toFixed(2)} ${price.value > ours ? "more" : "less"} than Ecotein.`
+          : "Cost per kg of protein. Ecotein is 8% cheaper than fishmeal, the price fish-feed mills buy against."}
+      </p>
+    </>
+  );
+}
+
+function UnitEconomics() {
+  const { bind, cls, hot } = useHot();
+  const total = unitEconomics.reduce((s, u) => s + u.value, 0);
+  const shown = unitEconomics.find((u) => u.label === hot) ?? unitEconomics.find((u) => u.us);
+  return (
+    <div className="reveal">
+      <div className={`stack${hot ? " has-hot" : ""}`} role="img" aria-label={`Of the $2,300 price per tonne: ${unitEconomics.map((u) => `${u.label} $${u.value}`).join(", ")}.`}>
+        {unitEconomics.map((u) => (
+          <span key={u.label} className={`${u.us ? "us" : ""}${cls(u.label)}`} style={{ width: `${(u.value / total) * 100}%` }} {...bind(u.label)}>
+            <b>${u.value.toLocaleString("en-US")}</b>
+          </span>
+        ))}
+      </div>
+      <p className="readout" aria-hidden="true">
+        <strong>{shown.label}:</strong> ${shown.value.toLocaleString("en-US")} a tonne, {Math.round((shown.value / total) * 100)}% of the $2,300 price
+      </p>
+      <ul className={`stack-legend${hot ? " has-hot" : ""}`}>
+        {unitEconomics.map((u, i) => (
+          <li key={u.label} className={cls(u.label).trim()} {...bind(u.label)}><span className={`key s${i}`}></span>{u.label} <b>${u.value.toLocaleString("en-US")}</b></li>
+        ))}
+      </ul>
+      <p className="eco-note">57% contribution margin on fish feed in 2031 (34% in 2027). Plastic costs us $0: we take low-value PET that recyclers reject.</p>
+    </div>
+  );
+}
+
+function UseOfFunds() {
+  const { bind, cls, hot } = useHot();
+  const shown = useOfFunds.find((u) => u.label === hot);
+  return (
+    <div className="funds reveal">
+      <div className={`dotgrid${hot ? " has-hot" : ""}`} role="img" aria-label="Stage 1 use of funds, each dot is 1%: 82 dots plant build, 5 team, 5 regulatory and R&D, 5 plant costs and pilots, 3 marketing and legal.">
+        {useOfFunds.flatMap((u) => Array.from({ length: u.dots }, (_, i) => (
+          <span key={`${u.label}${i}`} className={`d-${u.tone}${cls(u.label)}`} {...bind(u.label)}></span>
+        )))}
+      </div>
+      <div>
+        <p className="muted readout" aria-hidden="true">
+          {shown ? <><strong>{shown.label}:</strong> {shown.amount}, {shown.share}% of Stage 1 spending</> : "Stage 1 use of funds, each dot is 1%"}
+        </p>
+        <ul className={`funds-legend${hot ? " has-hot" : ""}`}>
+          {useOfFunds.map((u) => (
+            <li key={u.label} className={cls(u.label).trim()} {...bind(u.label)}><span className={`key d-${u.tone}`}></span>{u.label}<b>{u.amount}</b></li>
+          ))}
+        </ul>
+        <ExternalLink href={proForma}>Full pro forma (Google Sheets)</ExternalLink>
+      </div>
+    </div>
+  );
+}
+
+export default function Ecotein() {
 
   return (
-    <article className="ecotein">
+    <div className="wrap eco-frame-wrap">
+    <article className="ecotein" aria-label="Ecotein, the IDSN 599 semester project">
       <header className="eco-hero">
-        <div className="wrap eco-hero-inner">
+        <div className="eco-inner eco-hero-inner">
           <div className="reveal">
-            <p className="eco-course">IDSN 599 semester project, Team 10</p>
+            <p className="eco-course">Semester project, Product Team 10</p>
             <h2 className="eco-wordmark">ecotein</h2>
             <p className="eco-tagline">Plastic in, protein out.</p>
             <p className="eco-lede">
@@ -208,21 +409,7 @@ export default function Ecotein() {
       </Section>
 
       <Section id="market" title="Market size" tone="blue">
-        <div className="tam reveal">
-          <div className="tam-circles" aria-hidden="true">
-            <div className="c-tam"><span>TAM</span></div>
-            <div className="c-sam"><span>SAM</span></div>
-            <div className="c-som"><span>SOM</span></div>
-          </div>
-          <dl className="tam-list">
-            {market.map((m) => (
-              <div key={m.key}>
-                <dt><span className="tam-key">{m.key}</span> {m.value}</dt>
-                <dd><span className="tam-label">{m.label}.</span> {m.text}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <MarketSize />
         <p className="eco-note reveal">
           Circles not to scale. Sources:{" "}
           {marketSources.map((s, i) => (
@@ -233,50 +420,7 @@ export default function Ecotein() {
 
       <Section id="competition" title="Competition">
         <p className="eco-statement reveal">Renewable, resilient and disruptive.</p>
-        <div className="posmap reveal" role="img" aria-label="Positioning map. Ecotein sits furthest toward renewable materials and high supply reliability, ahead of Solar Foods. Fishmeal, soybean meal and Unibio use virgin materials; poultry and insect meal are renewable but less reliable.">
-          <span className="ax ax-top">High supply reliability</span>
-          <span className="ax ax-bottom">Low supply reliability</span>
-          <span className="ax ax-left">Virgin materials</span>
-          <span className="ax ax-right">Renewable materials</span>
-          {positioning.map((p) => (
-            <span key={p.name} className={`pos${p.us ? " us" : ""}`}
-              style={{ left: `${50 + p.x * 42}%`, top: `${50 - p.y * 40}%` }}>{p.name}</span>
-          ))}
-        </div>
-
-        <dl className="posquads reveal">
-          <div className="us"><dt>Renewable materials, high supply reliability</dt><dd>Ecotein, Solar Foods</dd></div>
-          <div><dt>Renewable materials, low supply reliability</dt><dd>Insect meal, poultry meal</dd></div>
-          <div><dt>Virgin materials, low supply reliability</dt><dd>Unibio, soybean meal, fishmeal</dd></div>
-        </dl>
-
-        <div className="table-scroll reveal">
-          <table className="eco-table">
-            <caption>Where Ecotein stands today</caption>
-            <thead><tr><th scope="col"><span className="visually-hidden">Product</span></th>{comparisonColumns.map((c) => <th key={c} scope="col">{c}</th>)}</tr></thead>
-            <tbody>
-              {comparison.map((r) => (
-                <tr key={r.name} className={r.us ? "us" : ""}>
-                  <th scope="row">{r.name}</th>
-                  {r.cells.map((c, i) => <td key={i} className={c.startsWith("Yes") ? "yes" : c === "Partly" ? "" : "no"}>{c}</td>)}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="eco-note">*A hypothesis: gate fees are off in our base case.</p>
-
-        <h4 className="reveal">We compete with fishmeal, not soy</h4>
-        <ul className="hbars reveal" aria-label="Cost per kilogram of protein, US dollars">
-          {priceBenchmark.map((p) => (
-            <li key={p.name} className={p.us ? "us" : ""}>
-              <span className="hb-name">{p.name}</span>
-              <span className="hb-track"><span className="hb-bar" style={{ width: `${(p.value / maxPrice) * 100}%` }}></span></span>
-              <span className="hb-val">${p.value.toFixed(2)}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="eco-note">Cost per kg of protein. Ecotein is 8% cheaper than fishmeal, the price fish-feed mills buy against.</p>
+        <Competition />
       </Section>
 
       <Section id="impact" title="Impact by 2031" tone="night">
@@ -300,19 +444,7 @@ export default function Ecotein() {
         </div>
 
         <h4 className="reveal">Every tonne of fish feed earns $1,309</h4>
-        <div className="reveal">
-          <div className="stack" role="img" aria-label={`Of the $2,300 price per tonne: ${unitEconomics.map((u) => `${u.label} $${u.value}`).join(", ")}.`}>
-            {unitEconomics.map((u) => (
-              <span key={u.label} className={u.us ? "us" : ""} style={{ width: `${(u.value / unitTotal) * 100}%` }}>
-                <b>${u.value.toLocaleString("en-US")}</b>
-              </span>
-            ))}
-          </div>
-          <ul className="stack-legend">
-            {unitEconomics.map((u, i) => <li key={u.label}><span className={`key s${i}`}></span>{u.label} <b>${u.value.toLocaleString("en-US")}</b></li>)}
-          </ul>
-          <p className="eco-note">57% contribution margin on fish feed in 2031 (34% in 2027). Plastic costs us $0: we take low-value PET that recyclers reject.</p>
-        </div>
+        <UnitEconomics />
 
         <Sensitivity />
 
@@ -327,18 +459,7 @@ export default function Ecotein() {
             </div>
           ))}
         </div>
-        <div className="funds reveal">
-          <div className="dotgrid" role="img" aria-label="Stage 1 use of funds, each dot is 1%: 82 dots plant build, 5 team, 5 regulatory and R&D, 5 plant costs and pilots, 3 marketing and legal.">
-            {dots.map((tone, i) => <span key={i} className={`d-${tone}`}></span>)}
-          </div>
-          <div>
-            <p className="muted">Stage 1 use of funds, each dot is 1%</p>
-            <ul className="funds-legend">
-              {useOfFunds.map((u) => <li key={u.label}><span className={`key d-${u.tone}`}></span>{u.label}<b>{u.amount}</b></li>)}
-            </ul>
-            <ExternalLink href={proForma}>Full pro forma (Google Sheets)</ExternalLink>
-          </div>
-        </div>
+        <UseOfFunds />
       </Section>
 
       <Section id="insights" title="What experts told us" tone="night">
@@ -375,5 +496,6 @@ export default function Ecotein() {
         </p>
       </Section>
     </article>
+    </div>
   );
 }
