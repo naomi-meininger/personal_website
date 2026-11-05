@@ -66,7 +66,7 @@ function Home() {
         <div className="wrap split">
           <h2 id="more" className="reveal">More</h2>
           <ul className="next-links">
-            <li className="reveal"><a href="masters.html"><strong>Master's Program</strong><span>Ecotein, a plastic-to-protein startup from my product management class</span></a></li>
+            <li className="reveal"><a href="masters.html"><strong>Master's Program</strong><span>Classes and projects from my M.S. in Integrated Design, Business, and Technology at USC</span></a></li>
             <li className="reveal"><a href="projects.html"><strong>Projects</strong><span>Network security, sports analytics, image compression and more</span></a></li>
             <li className="reveal"><a href="skills.html"><strong>Skills</strong><span>Languages, frameworks and tools I work with</span></a></li>
             <li className="reveal"><a href="ventures.html"><strong>Theater &amp; Teaching</strong><span>Directing <i>tick, tick... BOOM!</i> and teaching a course on Disney</span></a></li>
