@@ -1,7 +1,7 @@
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import Ecotein from "../components/Ecotein.jsx";
-import { program, courses } from "../data/masters.js";
+import { program, courses, termNotes } from "../data/masters.js";
 
 // Full project write-ups a class can point to with `caseStudy`.
 const caseStudies = { ecotein: Ecotein };
@@ -56,7 +56,7 @@ function Masters() {
             <div className="wrap">
               <div className="group-head reveal">
                 <h2 id={id}>{t.term}</h2>
-                <p>{t.courses.length} {t.courses.length === 1 ? "class" : "classes"}</p>
+                <p>{t.courses.length} {t.courses.length === 1 ? "class" : "classes"}{termNotes[t.term] ? `, ${termNotes[t.term]}` : ""}</p>
               </div>
               {t.courses.map((c) => <Course key={c.id} course={c} />)}
             </div>

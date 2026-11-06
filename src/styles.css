@@ -883,7 +883,8 @@ html.reveal-ready .poster.reveal:not(.in) {
 .course-meta { grid-column: 1; grid-row: 1 / span 3; color: var(--muted); font-style: italic; margin: 6px 0 0; }
 .course-title { font-weight: 800; font-size: 2.2rem; line-height: 1; margin-bottom: 10px; }
 .course-head p { margin: 0; }
-.course-highlights { margin: 12px 0 0; padding-left: 1.2em; }
+.course-highlights { margin: 12px 0 0; padding-left: 1.2em; max-width: 64ch; display: grid; gap: 6px; }
+.course-head:last-child { margin-bottom: 0; }
 .course-upcoming {
   margin: 0 0 0 280px;
   max-width: none;
