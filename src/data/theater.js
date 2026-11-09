@@ -1,8 +1,8 @@
 // The number behind the guessing game on the Theater page. Update it after each show you log in Mezzanine.
 export const showsSeen = {
   year: 2026,
-  count: 34,
-  asOf: "October 2026",
+  count: 35,
+  asOf: "November 2026",
 };
 
 // Each group gets its own list on the Theater page, newest first. Show titles render in italics.
