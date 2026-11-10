@@ -25,12 +25,12 @@ export const courses = [
       "An introduction to interaction design through physical computing: learning the technical basics to build innovative, interactive experiences into physical objects.",
   },
   {
-    id: "idsn-579",
-    code: "IDSN 579",
-    name: "Social Media Incubator: Data-Driven Growth for Founders",
+    id: "idsn-528",
+    code: "IDSN 528",
+    name: "Using Intellectual Property Laws to Protect Your Products and Ideas",
     term: "Spring 2027",
     summary:
-      "A hands-on, challenge-based incubator where founders post weekly, analyze real data and refine their strategy in real time, covering marketing analytics, content performance, social media funnels, and organic and paid growth. The goal is a data-backed social media system that drives customer acquisition and supports fundraising.",
+      "The second of a two-course sequence on the copyrights, trademarks and patents that underlie ownership of an idea or product.",
   },
   {
     id: "idsn-515",
