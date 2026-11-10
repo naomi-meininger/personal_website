@@ -30,7 +30,11 @@ export const courses = [
     name: "Using Intellectual Property Laws to Protect Your Products and Ideas",
     term: "Spring 2027",
     summary:
-      "The second of a two-course sequence on the copyrights, trademarks and patents that underlie ownership of an idea or product.",
+      "A working understanding, for business and design students, of the legal tools that protect ideas, creative work and brands, and practical strategies for licensing, enforcing and safeguarding a company's intellectual property.",
+    highlights: [
+      "Covers copyright (including fair use and the recent AI cases), trademark, trade secrets, and state-law theories like right of publicity and idea-submission claims, with patents touched on briefly to show how they differ.",
+      "Taught for non-lawyers: explaining legal concepts in plain English, reading court opinions and statutes, and building the arguments raised in IP disputes, in writing and out loud.",
+    ],
   },
   {
     id: "idsn-515",
