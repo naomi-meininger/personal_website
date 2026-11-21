@@ -149,11 +149,19 @@ export const projects = [
 export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Systems"];
 
 // Sections on the Projects page, in display order. Each project's `group` picks one.
-// To show a school's logo on its heading, put the official file in public/logos/ and add
-// logo: "logos/usc.svg" (or .png) and logoAlt: "USC" to that group.
+// `logo` shows a school's official logo in place of its name (a full URL or a file in public/logos/).
+// Only use a logo the school allows for personal use: Tufts publishes its University Logo for that
+// (brand.tufts.edu, never the seal); USC limits its marks to official university business, so USC
+// gets its colors instead. `accent` and `accent2` color the rule under a heading.
 export const groups = [
   { id: "current", name: "Current", detail: "What I'm building now" },
-  { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology" },
-  { id: "tufts", name: "Tufts University", detail: "B.S. Computer Science, minors in Mathematics and Theater" },
+  { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology", accent: "#990000", accent2: "#FFCC00" },
+  {
+    id: "tufts",
+    name: "Tufts University",
+    detail: "B.S. Computer Science, minors in Mathematics and Theater",
+    logo: "https://brand.tufts.edu/sites/g/files/lrezom786/files/styles/large/public/2022-09/Tufts-logo-4c_5.jpg?itok=pQ14NYSX",
+    accent: "#3172AE",
+  },
   { id: "personal", name: "Personal projects", detail: "Built on my own time" },
 ];

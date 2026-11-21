@@ -435,7 +435,17 @@ main { display: block; }
 }
 
 .project-group { padding: 8px 0 40px; }
-.group-logo { height: 44px; width: auto; align-self: center; }
+.group-head[style] {
+  border-bottom: 0;
+  background:
+    linear-gradient(var(--group-accent), var(--group-accent)) left bottom / 100% 3px no-repeat,
+    linear-gradient(var(--group-accent-2), var(--group-accent-2)) left calc(100% - 3px) / 100% 3px no-repeat;
+  padding-bottom: 14px;
+}
+.group-title-logo { line-height: 0; }
+.group-logo-tile { display: inline-block; background: #fff; border-radius: 8px; padding: 2px 4px; }
+.group-logo-tile img { display: block; height: 64px; width: auto; }
+@media (max-width: 600px) { .group-logo-tile img { height: 50px; } }
 
 /* Project marks (see ProjectMark.jsx) */
 .project-mark {

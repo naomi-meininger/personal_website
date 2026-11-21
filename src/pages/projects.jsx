@@ -56,6 +56,24 @@ function Project({ project }) {
   );
 }
 
+// A section heading: the school's official logo when it has one we may use (falling back to text
+// if the image can't load), otherwise the name as text.
+function GroupTitle({ group }) {
+  const [broken, setBroken] = useState(false);
+  const id = `group-${group.id}`;
+  if (group.logo && !broken) {
+    const src = /^https?:/.test(group.logo) ? group.logo : publicFile(group.logo);
+    return (
+      <h2 id={id} className="group-title-logo">
+        <span className="group-logo-tile">
+          <img src={src} alt={group.name} referrerPolicy="no-referrer" onError={() => setBroken(true)} />
+        </span>
+      </h2>
+    );
+  }
+  return <h2 id={id}>{group.name}</h2>;
+}
+
 function Projects() {
   const [topic, setTopic] = useState("All");
   const shown = topic === "All" ? projects : projects.filter((p) => p.topics.includes(topic));
@@ -84,9 +102,8 @@ function Projects() {
           return (
             <section key={g.id} className="project-group" aria-labelledby={`group-${g.id}`}>
               <div className="wrap">
-                <div className="group-head reveal">
-                  {g.logo && <img className="group-logo" src={publicFile(g.logo)} alt={g.logoAlt ?? ""} />}
-                  <h2 id={`group-${g.id}`}>{g.name}</h2>
+                <div className="group-head reveal" style={g.accent ? { "--group-accent": g.accent, "--group-accent-2": g.accent2 ?? "transparent" } : undefined}>
+                  <GroupTitle group={g} />
                   <p>{g.detail}</p>
                 </div>
                 {items.map((project) => <Project key={project.title} project={project} />)}
