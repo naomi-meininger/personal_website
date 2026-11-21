@@ -12,11 +12,19 @@ function hintFor(guess, answer) {
 
 // The latest show: your own photo if you've added one, otherwise a stub with the title.
 function LastShow({ show }) {
+  const [broken, setBroken] = useState(false);
   if (!show) return null;
+  const src = show.image && (/^https?:/.test(show.image) ? show.image : publicFile(show.image));
   return (
     <div className="last-show">
-      {show.image ? (
-        <img className="last-show-art" src={publicFile(show.image)} alt={show.imageAlt} loading="lazy" />
+      {src && !broken ? (
+        <figure className="last-show-figure">
+          <img className="last-show-art" src={src} alt={show.imageAlt} loading="lazy"
+            referrerPolicy="no-referrer" onError={() => setBroken(true)} />
+          {show.imageCredit && (
+            <figcaption><a href={show.imageCredit.href} target="_blank" rel="noopener">{show.imageCredit.label}</a></figcaption>
+          )}
+        </figure>
       ) : (
         <div className="last-show-art last-show-stub" aria-hidden="true">
           <span className="stub-admit">Admit one</span>

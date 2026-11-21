@@ -3,15 +3,17 @@ export const showsSeen = {
   year: 2026,
   count: 36,
   asOf: "November 2026",
-  // The most recent show, shown under the game. To add your own photo (your Playbill, the marquee),
-  // put it in public/shows/ and set image to its name, e.g. "shows/fantasticks.jpg", plus a short imageAlt.
+  // The most recent show, shown under the game. `image` is either a full URL (like the show's poster on
+  // Broadway.com, credited with imageCredit) or a photo of your own in public/shows/, e.g. "shows/fantasticks.jpg".
+  // If the image can't load, the card shows a ticket with the title instead.
   latest: {
     title: "The Fantasticks",
     where: "Hayes Theater, Broadway",
     when: "November 2026",
     url: "https://www.broadway.com/shows/the-fantasticks/",
-    image: null,
-    imageAlt: "",
+    image: "https://imaging.broadway.com/images/poster-178275/w178/141838-3.jpg",
+    imageAlt: "Poster for The Fantasticks on Broadway",
+    imageCredit: { label: "Poster: Broadway.com", href: "https://www.broadway.com/shows/the-fantasticks/" },
   },
 };
 

@@ -863,6 +863,10 @@ html.reveal-ready .poster.reveal:not(.in) {
   margin-top: 20px;
 }
 .last-show p { margin: 0; }
+.last-show-figure { margin: 0; display: grid; gap: 6px; justify-items: center; }
+.last-show-figure figcaption { font-size: 0.72rem; line-height: 1.2; text-align: center; }
+.last-show-figure figcaption a { color: var(--muted); text-decoration: none; }
+.last-show-figure figcaption a:hover { color: var(--ink); text-decoration: underline; }
 .last-show-art { width: 96px; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px; box-shadow: 0 8px 20px -10px rgba(34, 23, 46, 0.5); }
 .last-show-stub {
   display: flex;
