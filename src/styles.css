@@ -854,6 +854,32 @@ html.reveal-ready .poster.reveal:not(.in) {
   .ticket.is-over .ticket-count { animation: curtain-call 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; }
 }
 
+.last-show {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  max-width: 640px;
+  margin-top: 20px;
+}
+.last-show p { margin: 0; }
+.last-show-art { width: 96px; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 4px; box-shadow: 0 8px 20px -10px rgba(34, 23, 46, 0.5); }
+.last-show-stub {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 8px;
+  background: var(--velvet);
+  color: #fff;
+  outline: 1.5px solid var(--brass);
+  outline-offset: -6px;
+}
+.stub-admit { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; text-align: center; }
+.stub-title { font-family: var(--display); font-weight: 800; font-size: 1.15rem; line-height: 0.95; text-align: center; margin-bottom: 18px; }
+.last-show-label { color: var(--muted); font-style: italic; font-size: 0.95rem; }
+.last-show-title { font-family: var(--display); font-weight: 700; font-size: 1.7rem; line-height: 1.05; }
+.last-show-meta { color: var(--muted); margin-bottom: 4px !important; }
+
 @keyframes punch {
   from { transform: scale(0.2); }
   to { transform: scale(1); }

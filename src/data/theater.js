@@ -1,8 +1,18 @@
 // The number behind the guessing game on the Theater page. Update it after each show you log in Mezzanine.
 export const showsSeen = {
   year: 2026,
-  count: 35,
+  count: 36,
   asOf: "November 2026",
+  // The most recent show, shown under the game. To add your own photo (your Playbill, the marquee),
+  // put it in public/shows/ and set image to its name, e.g. "shows/fantasticks.jpg", plus a short imageAlt.
+  latest: {
+    title: "The Fantasticks",
+    where: "Hayes Theater, Broadway",
+    when: "November 2026",
+    url: "https://www.broadway.com/shows/the-fantasticks/",
+    image: null,
+    imageAlt: "",
+  },
 };
 
 // Each group gets its own list on the Theater page, newest first. Show titles render in italics.

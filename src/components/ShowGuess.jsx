@@ -1,5 +1,6 @@
 import { useId, useRef, useState } from "react";
 import { showsSeen } from "../data/theater.js";
+import { publicFile } from "../data/links.js";
 
 const MAX_GUESSES = 5;
 
@@ -7,6 +8,31 @@ const MAX_GUESSES = 5;
 function hintFor(guess, answer) {
   const direction = guess < answer ? "Higher" : "Lower";
   return Math.abs(guess - answer) <= 2 ? `So close. ${direction}.` : `${direction}.`;
+}
+
+// The latest show: your own photo if you've added one, otherwise a stub with the title.
+function LastShow({ show }) {
+  if (!show) return null;
+  return (
+    <div className="last-show">
+      {show.image ? (
+        <img className="last-show-art" src={publicFile(show.image)} alt={show.imageAlt} loading="lazy" />
+      ) : (
+        <div className="last-show-art last-show-stub" aria-hidden="true">
+          <span className="stub-admit">Admit one</span>
+          <span className="stub-title">{show.title}</span>
+        </div>
+      )}
+      <div>
+        <p className="last-show-label">Last show I saw</p>
+        <p className="last-show-title"><i>{show.title}</i></p>
+        <p className="last-show-meta">{show.where}, {show.when}</p>
+        {show.url && (
+          <a className="text-link" href={show.url} target="_blank" rel="noopener">About the show on Broadway.com</a>
+        )}
+      </div>
+    </div>
+  );
 }
 
 // A theater ticket: guess on the left, and each guess punches a hole in the stub on the right.
@@ -56,6 +82,7 @@ export default function ShowGuess() {
   };
 
   return (
+    <>
     <div className={`ticket${over ? " is-over" : ""}${won ? " is-won" : ""}`}>
       <div className="ticket-main">
         <h3>How many shows have I seen in {year}?</h3>
@@ -109,5 +136,7 @@ export default function ShowGuess() {
         </ol>
       </div>
     </div>
+    <LastShow show={showsSeen.latest} />
+    </>
   );
 }
