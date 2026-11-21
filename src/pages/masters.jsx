@@ -24,16 +24,16 @@ function Course({ course }) {
         )}
       </div>
       {CaseStudy && <CaseStudy />}
-      {course.projects?.length > 0 && (
+      {course.finalProject && (
         <div className="course-projects">
-          {course.projects.map((id) => {
+          {[course.finalProject].map((id) => {
             const p = projects.find((x) => x.id === id);
             if (!p) return null;
             return (
               <a key={id} className="course-project reveal" href={`projects.html#${id}`}>
                 <ProjectMark id={id} />
                 <span>
-                  <span className="course-project-label">{p.status ?? "Project"}</span>
+                  <span className="course-project-label">Final project{p.status ? ` · ${p.status.toLowerCase()}` : ""}</span>
                   <strong>{p.title}</strong>
                   <span className="course-project-text">{p.body[0]}</span>
                   <span className="text-link">See it on the Projects page</span>

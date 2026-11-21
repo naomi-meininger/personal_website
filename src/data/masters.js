@@ -56,7 +56,7 @@ export const courses = [
     summary:
       "A semester working in a five-person product team to take a product from a blank page to an investor pitch: problem research, value proposition, go-to-market, market sizing, competitive analysis and a five-year pro forma.",
     caseStudy: "ecotein",
-    projects: ["greenroom"],
+    finalProject: "greenroom",
   },
   {
     id: "idsn-538",
@@ -64,8 +64,7 @@ export const courses = [
     name: "Extended Reality Technologies",
     term: "Fall 2026",
     summary: "Working with XR wearables and the principles of UX and UI design for extended reality.",
-    projects: ["ar-rehearsal"],
-    upcoming: "Final project coming soon",
+    finalProject: "ar-rehearsal",
   },
 ];
 
@@ -78,7 +77,7 @@ export const courses = [
     summary: "One or two sentences on what the class covered.",
     highlights: ["Something you made or learned", "Another one"],   // optional
     links: [{ label: "Final project (PDF)", href: "https://..." }],  // optional
-    projects: ["project-id"],     // optional: cards for projects from projects.js, linking to the Projects page
+    finalProject: "project-id",   // optional: id of the final project in projects.js; shows a card linking to it
     upcoming: "Final project coming soon",                         // optional placeholder; remove once the project is up
   },
 */

@@ -17,7 +17,7 @@ export const current = [
   {
     id: "greenroom",
     title: "greenroom",
-    kicker: "IDSN 599: Product Management",
+    kicker: "Final project · IDSN 599: Product Management",
     text: "A booking workspace for music agents: every hold, offer and contract on a tour in one place, with venues ranked by fan demand, routing optimized and the net for each show estimated before you commit.",
     href: "https://claude.ai/artifact/VFnatqWfMsJuknMFSKPUQH",
     isPublic: false,
@@ -25,7 +25,7 @@ export const current = [
   {
     id: "ar-rehearsal",
     title: "AR Rehearsal",
-    kicker: "IDSN 538: Extended Reality Technologies",
+    kicker: "Final project · IDSN 538: Extended Reality",
     text: "An interactive Spline prototype of rehearsing with an AR headset that shows an actor her marks, cues and lines on stage, across three scenes you can walk through.",
     href: "https://claude.ai/artifact/REkPGXG34CZwRhnzY6hS41",
     isPublic: false,
@@ -38,7 +38,7 @@ export const projects = [
     group: "usc",
     title: "AR Rehearsal",
     skills: ["Spline"],
-    meta: ["Fall 2026", "IDSN 538: Extended Reality Technologies", "Spline"],
+    meta: ["Fall 2026", "Final project, IDSN 538: Extended Reality Technologies", "Spline"],
     topics: ["Product", "XR"],
     body: [
       "An interactive prototype of rehearsing with an AR headset and a VR scene partner. The headset shows the actor her marks, cues and lines on stage.",
@@ -69,7 +69,7 @@ export const projects = [
     group: "usc",
     title: "greenroom",
     skills: [],
-    meta: ["Fall 2026", "IDSN 599: Product Management for Challenge-Based Innovation", "Product demo"],
+    meta: ["Fall 2026", "Final project, IDSN 599: Product Management for Challenge-Based Innovation", "Product demo"],
     topics: ["Product", "Web apps"],
     body: [
       "A product demo of a booking workspace for music agents and managers, so every hold, offer and contract for a tour lives in one place instead of across email threads and spreadsheets.",
