@@ -17,7 +17,7 @@ export const current = [
   {
     id: "greenroom",
     title: "greenroom",
-    kicker: "Product demo",
+    kicker: "IDSN 599: Product Management",
     text: "A booking workspace for music agents: every hold, offer and contract on a tour in one place, with venues ranked by fan demand, routing optimized and the net for each show estimated before you commit.",
     href: "https://claude.ai/artifact/VFnatqWfMsJuknMFSKPUQH",
     isPublic: false,
@@ -63,6 +63,20 @@ export const projects = [
       { label: "Code on GitHub", href: "https://github.com/naomi-meininger/theatermax" },
     ],
     status: "Prototype",
+  },
+  {
+    id: "greenroom",
+    group: "usc",
+    title: "greenroom",
+    skills: [],
+    meta: ["Fall 2026", "IDSN 599: Product Management for Challenge-Based Innovation", "Product demo"],
+    topics: ["Product", "Web apps"],
+    body: [
+      "A product demo of a booking workspace for music agents and managers, so every hold, offer and contract for a tour lives in one place instead of across email threads and spreadsheets.",
+      "It ranks venues by fit and fan demand in each city, optimizes the tour route, estimates the net for each show, and prices travel and backline rentals before anything is booked.",
+    ],
+    links: [],
+    status: "In progress",
   },
   {
     id: "ecotein",
@@ -114,20 +128,6 @@ export const projects = [
       { label: "Class presentation", href: "https://docs.google.com/presentation/d/12SW0c7auWC1h2tl860GD3fyzBPeXcb_hSZoyhimoaWU/edit?usp=sharing" },
       { label: "Code on GitHub", href: "https://github.com/RohunNanda/CS152-FinalProject" },
     ],
-  },
-  {
-    id: "greenroom",
-    group: "personal",
-    title: "greenroom",
-    skills: [],
-    meta: ["Fall 2026", "Product demo"],
-    topics: ["Product", "Web apps"],
-    body: [
-      "A product demo of a booking workspace for music agents and managers, so every hold, offer and contract for a tour lives in one place instead of across email threads and spreadsheets.",
-      "It ranks venues by fit and fan demand in each city, optimizes the tour route, estimates the net for each show, and prices travel and backline rentals before anything is booked.",
-    ],
-    links: [],
-    status: "In progress",
   },
   {
     id: "theta-budget-tracker",
