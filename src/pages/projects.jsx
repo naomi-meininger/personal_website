@@ -3,6 +3,8 @@ import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import { projects, topics, groups } from "../data/projects.js";
 import SkillTags from "../components/SkillTags.jsx";
+import ProjectMark from "../components/ProjectMark.jsx";
+import { publicFile } from "../data/links.js";
 
 // Dim the word "redacted" so the sample output reads like real tool output.
 function TerminalLine({ kind, text }) {
@@ -19,6 +21,7 @@ function Project({ project }) {
   return (
     <article className="entry reveal" id={project.id}>
       <div className="entry-meta">
+        <ProjectMark id={project.id} />
         {project.meta.map((line) => <p key={line}>{line}</p>)}
       </div>
       <div>
@@ -82,6 +85,7 @@ function Projects() {
             <section key={g.id} className="project-group" aria-labelledby={`group-${g.id}`}>
               <div className="wrap">
                 <div className="group-head reveal">
+                  {g.logo && <img className="group-logo" src={publicFile(g.logo)} alt={g.logoAlt ?? ""} />}
                   <h2 id={`group-${g.id}`}>{g.name}</h2>
                   <p>{g.detail}</p>
                 </div>

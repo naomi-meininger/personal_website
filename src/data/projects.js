@@ -149,6 +149,8 @@ export const projects = [
 export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Systems"];
 
 // Sections on the Projects page, in display order. Each project's `group` picks one.
+// To show a school's logo on its heading, put the official file in public/logos/ and add
+// logo: "logos/usc.svg" (or .png) and logoAlt: "USC" to that group.
 export const groups = [
   { id: "current", name: "Current", detail: "What I'm building now" },
   { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology" },

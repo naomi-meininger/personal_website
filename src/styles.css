@@ -435,6 +435,29 @@ main { display: block; }
 }
 
 .project-group { padding: 8px 0 40px; }
+.group-logo { height: 44px; width: auto; align-self: center; }
+
+/* Project marks (see ProjectMark.jsx) */
+.project-mark {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  background: var(--ground-raised);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+.project-mark svg { width: 30px; height: 30px; overflow: visible; }
+.project-mark .mark-accent { fill: var(--velvet); }
+.project-mark .mark-accent-stroke { stroke: var(--velvet); }
+.project-mark .mark-fill { fill: currentColor; }
+.mark-theatermax { background: #16130f; color: #c9962b; border-color: #16130f; }
+.mark-ecotein { background: var(--eco-blue); border-color: var(--eco-blue); }
+.mark-ecotein .mark-fish { width: 46px; }
+.mark-terminal { background: var(--term-bg); color: var(--term-ink); border-color: var(--term-bg); }
+.mark-terminal .mark-accent { fill: var(--term-warn); }
 .group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; padding: 40px 0 8px; border-bottom: 3px solid var(--ink); }
 .group-head h2 { margin: 0; font-size: 2.6rem; }
 .group-head p { margin: 0; color: var(--muted); font-style: italic; }

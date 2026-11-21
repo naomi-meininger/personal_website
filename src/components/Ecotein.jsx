@@ -11,7 +11,7 @@ const deckPdf = publicFile("ecotein-deck.pdf");
 const money = (n) => `${n < 0 ? "−" : ""}$${Math.abs(n).toLocaleString("en-US")}`;
 
 // The Ecotein mark: a fish drawn in dots, bigger toward the head.
-function DotFish({ className }) {
+export function DotFish({ className }) {
   const dots = [];
   for (let col = 0; col < 15; col++) {
     const t = col / 14;
