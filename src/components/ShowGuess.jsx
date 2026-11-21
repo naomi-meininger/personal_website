@@ -1,5 +1,5 @@
 import { useId, useRef, useState } from "react";
-import { showsSeen } from "../data/theater.js";
+import { diary, showsSeen } from "../data/theater.js";
 import { publicFile } from "../data/links.js";
 
 const MAX_GUESSES = 5;
@@ -121,8 +121,8 @@ export default function ShowGuess() {
           <div className="ticket-after">
             <p className="ticket-note">
               Counted in my{" "}
-              <a className="text-link" href="https://www.theaterdiary.com/" target="_blank" rel="noopener">Mezzanine</a>{" "}
-              log as of {asOf}.
+              <a className="text-link" href={diary.profile ?? diary.href} target="_blank" rel="noopener">{diary.app}</a>{" "}
+              diary as of {asOf}.
             </p>
             <button type="button" className="button" onClick={reset}>Play again</button>
           </div>
@@ -145,6 +145,14 @@ export default function ShowGuess() {
       </div>
     </div>
     <LastShow show={showsSeen.latest} />
+    <p className="diary-note">
+      <span className="diary-icon" aria-hidden="true">✎</span>
+      <span>
+        Every show I see goes in my theater diary on{" "}
+        <a className="text-link" href={diary.profile ?? diary.href} target="_blank" rel="noopener">{diary.app}</a>
+        {diary.profile ? ". Come see what I've been watching." : ", a Letterboxd for theater. Find me there to see what I've been watching."}
+      </span>
+    </p>
     </>
   );
 }

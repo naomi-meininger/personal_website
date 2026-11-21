@@ -1,4 +1,12 @@
 // The number behind the guessing game on the Theater page. Update it after each show you log in Mezzanine.
+// Where my full theater log lives. Set `profile` to your Mezzanine profile link (or add a username)
+// to send visitors straight to your diary instead of the app's home page.
+export const diary = {
+  app: "Mezzanine",
+  href: "https://www.theaterdiary.com/",
+  profile: null,
+};
+
 export const showsSeen = {
   year: 2026,
   count: 36,
