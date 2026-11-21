@@ -2,10 +2,18 @@ import compressionResults from "../assets/images/compression-results.jpg";
 import { publicFile } from "./links.js";
 
 // Newest first. `topics` drive the filter on the Projects page.
+// The big "Currently building" header at the top of the Projects page. `id` is the project it links to.
+export const current = {
+  id: "theatermax",
+  title: "TheaterMax",
+  text: "One place to compare theater tickets across every seller: prices, dates, seats, and lottery and rush deals for Broadway and Off-Broadway.",
+  href: "https://naomi-meininger.github.io/theatermax/",
+};
+
 export const projects = [
   {
     id: "theatermax",
-    group: "current",
+    group: "personal",
     title: "TheaterMax",
     skills: ["JavaScript", "Node.js", "GitHub Actions"],
     meta: ["In progress", "Personal project", "JavaScript, Node.js, GitHub Actions"],
@@ -154,7 +162,6 @@ export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Sy
 // (brand.tufts.edu, never the seal); USC limits its marks to official university business, so USC
 // gets its colors instead. `accent` and `accent2` color the rule under a heading.
 export const groups = [
-  { id: "current", name: "Current", detail: "What I'm building now" },
   { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology", accent: "#990000", accent2: "#FFCC00" },
   {
     id: "tufts",

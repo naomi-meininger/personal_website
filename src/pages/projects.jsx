@@ -1,7 +1,7 @@
 import { useState } from "react";
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
-import { projects, topics, groups } from "../data/projects.js";
+import { projects, topics, groups, current } from "../data/projects.js";
 import SkillTags from "../components/SkillTags.jsx";
 import ProjectMark from "../components/ProjectMark.jsx";
 import { publicFile } from "../data/links.js";
@@ -78,12 +78,40 @@ function Projects() {
   const [topic, setTopic] = useState("All");
   const shown = topic === "All" ? projects : projects.filter((p) => p.topics.includes(topic));
 
+  // Jump to the current project in its section, clearing any filter that would hide it.
+  const showCurrent = (event) => {
+    event.preventDefault();
+    setTopic("All");
+    requestAnimationFrame(() => {
+      const el = document.getElementById(current.id);
+      if (!el) return;
+      el.classList.add("is-target", "in");
+      el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      history.replaceState(null, "", `#${current.id}`);
+    });
+  };
+
   return (
     <Layout current="projects">
       <div className="wrap page-intro">
         <h1 className="page-title reveal">Projects</h1>
-        <p className="lede reveal">What I'm building now, plus things I've built at USC, at Tufts and on my own.</p>
-        <div className="filters reveal" role="group" aria-label="Filter projects by topic">
+        <p className="lede reveal">Things I've built at USC, at Tufts and on my own, newest first in each.</p>
+      </div>
+
+      <div className="wrap">
+        <section className="current-feature reveal" aria-labelledby="current-title">
+          <ProjectMark id={current.id} />
+          <div className="current-text">
+            <p className="current-label">Currently building</p>
+            <h2 id="current-title" className="current-title">{current.title}</h2>
+            <p>{current.text}</p>
+            <div className="actions">
+              <a className="button current-button" href={current.href} target="_blank" rel="noopener">Open {current.title}</a>
+              <a className="text-link current-link" href={`#${current.id}`} onClick={showCurrent}>Read more in Personal projects</a>
+            </div>
+          </div>
+        </section>
+        <div className="filters filters-below reveal" role="group" aria-label="Filter projects by topic">
           {["All", ...topics].map((t) => {
             const count = t === "All" ? projects.length : projects.filter((p) => p.topics.includes(t)).length;
             return (

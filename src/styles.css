@@ -434,14 +434,38 @@ main { display: block; }
   margin-top: 6px;
 }
 
-.project-group { padding: 8px 0 40px; }
-.group-head[style] {
-  border-bottom: 0;
-  background:
-    linear-gradient(var(--group-accent), var(--group-accent)) left bottom / 100% 3px no-repeat,
-    linear-gradient(var(--group-accent-2), var(--group-accent-2)) left calc(100% - 3px) / 100% 3px no-repeat;
-  padding-bottom: 14px;
+.filters-below { margin-top: 8px; }
+.current-feature {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  background: #16130f;
+  color: #f6f1e7;
+  border-radius: 16px;
+  padding: 36px 40px;
+  margin-bottom: 24px;
 }
+.current-feature .project-mark { width: 88px; height: 88px; border-radius: 18px; margin: 6px 0 0; border-color: #c9962b; }
+.current-feature .project-mark svg { width: 46px; height: 46px; }
+.current-label { color: #c9962b; font-style: italic; margin: 0 0 4px; }
+.current-title { font-weight: 800; font-size: clamp(3.2rem, 8vw, 5.5rem); line-height: 0.9; margin: 0 0 14px; color: #f6f1e7; }
+.current-text > p:not(.current-label) { font-size: 1.2rem; max-width: 46ch; margin: 0; }
+.current-feature .actions { margin-top: 22px; }
+.current-button { background: #c9962b; color: #16130f; }
+.current-button:hover { background: #f6f1e7; }
+.current-link { color: #f6f1e7; text-decoration-color: #c9962b; }
+.current-link:hover { color: #c9962b; }
+.current-feature :focus-visible { outline-color: #c9962b; }
+@media (max-width: 600px) {
+  .current-feature { grid-template-columns: 1fr; gap: 16px; padding: 26px 22px; }
+  .current-feature .project-mark { width: 64px; height: 64px; }
+  .current-feature .project-mark svg { width: 34px; height: 34px; }
+}
+
+.project-group { padding: 8px 0 40px; }
+/* Every section heading has a rule; a school's colors replace the default ink (see `accent` in projects.js). */
+
 .group-title-logo { line-height: 0; }
 .group-logo-tile { display: inline-block; background: #fff; border-radius: 8px; padding: 2px 4px; }
 .group-logo-tile img { display: block; height: 64px; width: auto; }
@@ -468,7 +492,7 @@ main { display: block; }
 .mark-ecotein .mark-fish { width: 46px; }
 .mark-terminal { background: var(--term-bg); color: var(--term-ink); border-color: var(--term-bg); }
 .mark-terminal .mark-accent { fill: var(--term-warn); }
-.group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; padding: 40px 0 8px; border-bottom: 3px solid var(--ink); }
+.group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; padding: 40px 0 8px; border-bottom: 3px solid var(--group-accent, var(--ink)); box-shadow: inset 0 -3px 0 var(--group-accent-2, transparent); }
 .group-head h2 { margin: 0; font-size: 2.6rem; }
 .group-head p { margin: 0; color: var(--muted); font-style: italic; }
 .group-head + .entry { border-top: 0; }
