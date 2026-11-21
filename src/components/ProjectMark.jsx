@@ -12,6 +12,27 @@ const marks = {
     // TheaterMax's own logo mark: a gold star.
     svg: <path d="M16 4.5l3.4 7.1 7.8 1-5.7 5.4 1.4 7.7L16 22l-6.9 3.7 1.4-7.7-5.7-5.4 7.8-1z" fill="currentColor" />,
   },
+  greenroom: {
+    tone: "greenroom",
+    // greenroom's own logo idea: a ticket with a spark and a perforated stub.
+    svg: (
+      <>
+        <path d="M5 8h22a2 2 0 0 1 2 2v3.5a2.5 2.5 0 0 0 0 5V22a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3.5a2.5 2.5 0 0 0 0-5V10a2 2 0 0 1 2-2z" fill="currentColor" />
+        <path d="M12 11q.6 4.4 5 5-4.4.6-5 5-.6-4.4-5-5 4.4-.6 5-5z" className="mark-accent" />
+        <path d="M22 10.5v11" stroke="#7a1626" strokeWidth="1.4" strokeDasharray="1.6 2.2" />
+      </>
+    ),
+  },
+  "ar-rehearsal": {
+    tone: "xr",
+    // A headset with a gold mark on the stage floor in view.
+    svg: (
+      <>
+        <path d="M5 10h22a2 2 0 0 1 2 2v5a3 3 0 0 1-3 3h-5l-2-3h-6l-2 3H6a3 3 0 0 1-3-3v-5a2 2 0 0 1 2-2z" {...stroke} />
+        <ellipse cx="16" cy="26" rx="5" ry="1.8" className="mark-accent" />
+      </>
+    ),
+  },
   ecotein: { tone: "ecotein", custom: <DotFish className="mark-fish" /> },
   alarm: {
     tone: "terminal",

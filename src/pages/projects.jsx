@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import mount from "../mount.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import { projects, topics, groups, current } from "../data/projects.js";
@@ -74,20 +74,90 @@ function GroupTitle({ group }) {
   return <h2 id={id}>{group.name}</h2>;
 }
 
+const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const sectionName = (id) => groups.find((g) => g.id === projects.find((p) => p.id === id)?.group)?.name ?? "Projects";
+
+// "Currently building" as a deck: one slide per project. Swipe or scroll on touch, arrows or
+// the dots anywhere, and Left/Right keys when the deck has focus.
+function CurrentCarousel({ onShow }) {
+  const track = useRef(null);
+  const [index, setIndex] = useState(0);
+  const count = current.length;
+
+  // Keep the dots in step with whichever slide is in view (also after a swipe).
+  useEffect(() => {
+    const el = track.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) setIndex(Number(e.target.dataset.index)); });
+    }, { root: el, threshold: 0.6 });
+    el.querySelectorAll(".deck-slide").forEach((slide) => io.observe(slide));
+    return () => io.disconnect();
+  }, []);
+
+  const go = (i) => {
+    const next = (i + count) % count;
+    const el = track.current;
+    el.scrollTo({ left: el.clientWidth * next, behavior: reducedMotion() ? "auto" : "smooth" });
+    setIndex(next);
+  };
+
+  const onKey = (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); go(index + 1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(index - 1); }
+  };
+
+  return (
+    <section className="deck reveal" aria-roledescription="carousel" aria-labelledby="deck-title" onKeyDown={onKey}>
+      <div className="deck-top">
+        <h2 id="deck-title" className="deck-title">Currently building</h2>
+        <p className="deck-count" aria-live="polite">{String(index + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}</p>
+      </div>
+      <div className="deck-track" ref={track} tabIndex={0} aria-label="Current projects, use the arrow keys to move between slides">
+        {current.map((c, i) => (
+          <article key={c.id} className="deck-slide" data-index={i} aria-roledescription="slide" aria-label={`${i + 1} of ${count}: ${c.title}`} aria-hidden={i !== index}>
+            <ProjectMark id={c.id} />
+            <div>
+              <p className="deck-kicker">{c.kicker}</p>
+              <h3 className="deck-name">{c.title}</h3>
+              <p className="deck-text">{c.text}</p>
+              <div className="actions">
+                {c.isPublic
+                  ? <a className="button deck-button" href={c.href} target="_blank" rel="noopener" tabIndex={i === index ? 0 : -1}>Open {c.title}</a>
+                  : <span className="deck-soon">Demo link coming soon</span>}
+                <a className="text-link deck-link" href={`#${c.id}`} tabIndex={i === index ? 0 : -1}
+                  onClick={(e) => { e.preventDefault(); onShow(c.id); }}>Read more in {sectionName(c.id)}</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="deck-nav">
+        <button type="button" className="deck-arrow" onClick={() => go(index - 1)} aria-label="Previous project">←</button>
+        <div className="deck-dots">
+          {current.map((c, i) => (
+            <button key={c.id} type="button" className="deck-dot" aria-label={`Show ${c.title}`} aria-current={i === index} onClick={() => go(i)} />
+          ))}
+        </div>
+        <button type="button" className="deck-arrow" onClick={() => go(index + 1)} aria-label="Next project">→</button>
+      </div>
+    </section>
+  );
+}
+
 function Projects() {
   const [topic, setTopic] = useState("All");
   const shown = topic === "All" ? projects : projects.filter((p) => p.topics.includes(topic));
 
-  // Jump to the current project in its section, clearing any filter that would hide it.
-  const showCurrent = (event) => {
-    event.preventDefault();
+  // Jump to a project's entry, clearing any filter that would hide it.
+  const showProject = (id) => {
     setTopic("All");
     requestAnimationFrame(() => {
-      const el = document.getElementById(current.id);
+      const el = document.getElementById(id);
       if (!el) return;
       el.classList.add("is-target", "in");
-      el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-      history.replaceState(null, "", `#${current.id}`);
+      el.scrollIntoView({ behavior: reducedMotion() ? "auto" : "smooth", block: "start" });
+      history.replaceState(null, "", `#${id}`);
     });
   };
 
@@ -99,18 +169,7 @@ function Projects() {
       </div>
 
       <div className="wrap">
-        <section className="current-feature reveal" aria-labelledby="current-title">
-          <ProjectMark id={current.id} />
-          <div className="current-text">
-            <p className="current-label">Currently building</p>
-            <h2 id="current-title" className="current-title">{current.title}</h2>
-            <p>{current.text}</p>
-            <div className="actions">
-              <a className="button current-button" href={current.href} target="_blank" rel="noopener">Open {current.title}</a>
-              <a className="text-link current-link" href={`#${current.id}`} onClick={showCurrent}>Read more in Personal projects</a>
-            </div>
-          </div>
-        </section>
+        <CurrentCarousel onShow={showProject} />
         <div className="filters filters-below reveal" role="group" aria-label="Filter projects by topic">
           {["All", ...topics].map((t) => {
             const count = t === "All" ? projects.length : projects.filter((p) => p.topics.includes(t)).length;

@@ -435,33 +435,68 @@ main { display: block; }
 }
 
 .filters-below { margin-top: 8px; }
-.current-feature {
+.deck {
+  background: #16130f;
+  color: #f6f1e7;
+  border-radius: 16px;
+  padding: 28px 0 22px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.deck-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 0 40px; }
+.deck-title { font-weight: 800; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 0.95; margin: 0; color: #f6f1e7; }
+.deck-count { white-space: nowrap; margin: 0; color: #c9962b; font-family: var(--display, inherit); font-weight: 700; letter-spacing: 0.08em; }
+.deck-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  margin-top: 18px;
+  border-top: 2px dashed rgba(201, 150, 43, 0.45);
+}
+.deck-track::-webkit-scrollbar { display: none; }
+.deck-track:focus-visible { outline: 2px solid #c9962b; outline-offset: -4px; }
+.deck-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 28px;
   align-items: start;
-  background: #16130f;
-  color: #f6f1e7;
-  border-radius: 16px;
-  padding: 36px 40px;
-  margin-bottom: 24px;
+  padding: 28px 40px 8px;
+  min-height: 300px;
 }
-.current-feature .project-mark { width: 88px; height: 88px; border-radius: 18px; margin: 6px 0 0; border-color: #c9962b; }
-.current-feature .project-mark svg { width: 46px; height: 46px; }
-.current-label { color: #c9962b; font-style: italic; margin: 0 0 4px; }
-.current-title { font-weight: 800; font-size: clamp(3.2rem, 8vw, 5.5rem); line-height: 0.9; margin: 0 0 14px; color: #f6f1e7; }
-.current-text > p:not(.current-label) { font-size: 1.2rem; max-width: 46ch; margin: 0; }
-.current-feature .actions { margin-top: 22px; }
-.current-button { background: #c9962b; color: #16130f; }
-.current-button:hover { background: #f6f1e7; }
-.current-link { color: #f6f1e7; text-decoration-color: #c9962b; }
-.current-link:hover { color: #c9962b; }
-.current-feature :focus-visible { outline-color: #c9962b; }
+.deck-slide .project-mark { width: 88px; height: 88px; border-radius: 18px; margin: 6px 0 0; }
+.deck-slide .project-mark svg { width: 46px; height: 46px; }
+.deck-slide .mark-theatermax { border-color: #c9962b; }
+.deck-kicker { color: #c9962b; font-style: italic; margin: 0 0 4px; }
+.deck-name { font-weight: 800; font-size: clamp(2.6rem, 6.5vw, 4.6rem); line-height: 0.92; margin: 0 0 14px; color: #f6f1e7; }
+.deck-text { font-size: 1.15rem; max-width: 52ch; margin: 0; }
+.deck .actions { margin-top: 22px; align-items: center; }
+.deck-button { background: #c9962b; color: #16130f; }
+.deck-button:hover { background: #f6f1e7; }
+.deck-soon { border: 1px dashed rgba(246, 241, 231, 0.4); border-radius: 8px; padding: 9px 14px; color: rgba(246, 241, 231, 0.75); }
+.deck-link { color: #f6f1e7; text-decoration-color: #c9962b; }
+.deck-link:hover { color: #c9962b; }
+.deck :focus-visible { outline-color: #c9962b; }
+.deck-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 40px 0; }
+.deck-arrow {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(246, 241, 231, 0.3); background: transparent; color: #f6f1e7;
+  font-size: 1.2rem; cursor: pointer;
+}
+.deck-arrow:hover { background: #c9962b; border-color: #c9962b; color: #16130f; }
+.deck-dots { display: flex; gap: 10px; }
+.deck-dot { width: 10px; height: 10px; padding: 0; border-radius: 99px; border: 0; background: rgba(246, 241, 231, 0.3); cursor: pointer; transition: width 0.25s, background 0.25s; }
+.deck-dot[aria-current="true"] { width: 28px; background: #c9962b; }
 @media (max-width: 600px) {
-  .current-feature { grid-template-columns: 1fr; gap: 16px; padding: 26px 22px; }
-  .current-feature .project-mark { width: 64px; height: 64px; }
-  .current-feature .project-mark svg { width: 34px; height: 34px; }
+  .deck { padding-top: 22px; }
+  .deck-top, .deck-nav { padding-left: 22px; padding-right: 22px; }
+  .deck-slide { grid-template-columns: 1fr; gap: 16px; padding: 22px 22px 4px; min-height: 0; }
+  .deck-slide .project-mark { width: 64px; height: 64px; }
+  .deck-slide .project-mark svg { width: 34px; height: 34px; }
 }
+@media (prefers-reduced-motion: reduce) { .deck-dot { transition: none; } }
 
 .project-group { padding: 8px 0 40px; }
 /* Every section heading has a rule; a school's colors replace the default ink (see `accent` in projects.js). */
@@ -489,6 +524,10 @@ main { display: block; }
 .project-mark .mark-fill { fill: currentColor; }
 .mark-theatermax { background: #16130f; color: #c9962b; border-color: #16130f; }
 .mark-ecotein { background: var(--eco-blue); border-color: var(--eco-blue); }
+.mark-greenroom { background: linear-gradient(135deg, #9a1d30, #4a0b15); color: #e3c27a; border-color: #6d1a29; }
+.mark-greenroom .mark-accent { fill: #7a1626; }
+.mark-xr { background: #1a1440; color: #c9c2ff; border-color: #1a1440; }
+.mark-xr .mark-accent { fill: #c9962b; }
 .mark-ecotein .mark-fish { width: 46px; }
 .mark-terminal { background: var(--term-bg); color: var(--term-ink); border-color: var(--term-bg); }
 .mark-terminal .mark-accent { fill: var(--term-warn); }

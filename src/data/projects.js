@@ -2,15 +2,51 @@ import compressionResults from "../assets/images/compression-results.jpg";
 import { publicFile } from "./links.js";
 
 // Newest first. `topics` drive the filter on the Projects page.
-// The big "Currently building" header at the top of the Projects page. `id` is the project it links to.
-export const current = {
-  id: "theatermax",
-  title: "TheaterMax",
-  text: "One place to compare theater tickets across every seller: prices, dates, seats, and lottery and rush deals for Broadway and Off-Broadway.",
-  href: "https://naomi-meininger.github.io/theatermax/",
-};
+// "Currently building" slides at the top of the Projects page, in order. `id` matches a project
+// below (its entry is where "Read more" goes). Set `isPublic: true` once a link can be opened by
+// anyone; until then the slide shows "Demo link coming soon" instead of an Open button.
+export const current = [
+  {
+    id: "theatermax",
+    title: "TheaterMax",
+    kicker: "Personal project",
+    text: "One place to compare theater tickets across every seller: prices, dates, seats, and lottery and rush deals for Broadway and Off-Broadway.",
+    href: "https://naomi-meininger.github.io/theatermax/",
+    isPublic: true,
+  },
+  {
+    id: "greenroom",
+    title: "greenroom",
+    kicker: "Product demo",
+    text: "A booking workspace for music agents: every hold, offer and contract on a tour in one place, with venues ranked by fan demand, routing optimized and the net for each show estimated before you commit.",
+    href: "https://claude.ai/artifact/VFnatqWfMsJuknMFSKPUQH",
+    isPublic: false,
+  },
+  {
+    id: "ar-rehearsal",
+    title: "AR Rehearsal",
+    kicker: "IDSN 538: Extended Reality Technologies",
+    text: "An interactive Spline prototype of rehearsing with an AR headset that shows an actor her marks, cues and lines on stage, across three scenes you can walk through.",
+    href: "https://claude.ai/artifact/REkPGXG34CZwRhnzY6hS41",
+    isPublic: false,
+  },
+];
 
 export const projects = [
+  {
+    id: "ar-rehearsal",
+    group: "usc",
+    title: "AR Rehearsal",
+    skills: ["Spline"],
+    meta: ["Fall 2026", "IDSN 538: Extended Reality Technologies", "Spline"],
+    topics: ["Product", "XR"],
+    body: [
+      "An interactive prototype of rehearsing with an AR headset and a VR scene partner. The headset shows the actor her marks, cues and lines on stage.",
+      "It plays out in three scenes: switch between the audience's view and the actor's, walk her to her gold marks, call for a line, pinch to change the backdrop, and get a warning before a quick change.",
+    ],
+    links: [],
+    status: "In progress",
+  },
   {
     id: "theatermax",
     group: "personal",
@@ -78,6 +114,20 @@ export const projects = [
       { label: "Class presentation", href: "https://docs.google.com/presentation/d/12SW0c7auWC1h2tl860GD3fyzBPeXcb_hSZoyhimoaWU/edit?usp=sharing" },
       { label: "Code on GitHub", href: "https://github.com/RohunNanda/CS152-FinalProject" },
     ],
+  },
+  {
+    id: "greenroom",
+    group: "personal",
+    title: "greenroom",
+    skills: [],
+    meta: ["Fall 2026", "Product demo"],
+    topics: ["Product", "Web apps"],
+    body: [
+      "A product demo of a booking workspace for music agents and managers, so every hold, offer and contract for a tour lives in one place instead of across email threads and spreadsheets.",
+      "It ranks venues by fit and fan demand in each city, optimizes the tour route, estimates the net for each show, and prices travel and backline rentals before anything is booked.",
+    ],
+    links: [],
+    status: "In progress",
   },
   {
     id: "theta-budget-tracker",
@@ -154,7 +204,7 @@ export const projects = [
   },
 ];
 
-export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Systems"];
+export const topics = ["Product", "XR", "Security", "Web apps", "Data & modeling", "Systems"];
 
 // Sections on the Projects page, in display order. Each project's `group` picks one.
 // `logo` shows a school's official logo in place of its name (a full URL or a file in public/logos/).
