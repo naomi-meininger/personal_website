@@ -32,12 +32,12 @@ function Course({ course }) {
             return (
               <a key={id} className="course-project reveal" href={`projects.html#${id}`}>
                 <ProjectMark id={id} />
-                <span>
-                  <span className="course-project-label">Final project{p.status ? ` · ${p.status.toLowerCase()}` : ""}</span>
+                <span className="course-project-text">
+                  <span className="course-project-label">Final project{p.status ? `, ${p.status.toLowerCase()}` : ""}</span>
                   <strong>{p.title}</strong>
-                  <span className="course-project-text">{p.body[0]}</span>
-                  <span className="text-link">See it on the Projects page</span>
+                  <span className="course-project-desc">{p.short ?? p.body[0]}</span>
                 </span>
+                <span className="course-project-action"><span className="course-project-arrow" aria-hidden="true">→</span>View</span>
               </a>
             );
           })}
