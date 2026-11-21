@@ -61,7 +61,7 @@ function Projects() {
     <Layout current="projects">
       <div className="wrap page-intro">
         <h1 className="page-title reveal">Projects</h1>
-        <p className="lede reveal">Things I've built at USC, at Tufts and on my own, newest first in each.</p>
+        <p className="lede reveal">What I'm building now, plus things I've built at USC, at Tufts and on my own.</p>
         <div className="filters reveal" role="group" aria-label="Filter projects by topic">
           {["All", ...topics].map((t) => {
             const count = t === "All" ? projects.length : projects.filter((p) => p.topics.includes(t)).length;

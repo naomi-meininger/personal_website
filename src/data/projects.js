@@ -4,6 +4,23 @@ import { publicFile } from "./links.js";
 // Newest first. `topics` drive the filter on the Projects page.
 export const projects = [
   {
+    id: "theatermax",
+    group: "current",
+    title: "TheaterMax",
+    skills: ["JavaScript", "Node.js", "GitHub Actions"],
+    meta: ["In progress", "Personal project", "JavaScript, Node.js, GitHub Actions"],
+    topics: ["Web apps"],
+    body: [
+      "A site that brings theater ticket sellers into one place, so you can compare prices, dates and seats for Broadway and Off-Broadway shows without checking a dozen websites.",
+      "It lists every show with its lowest price, gathers lottery, rush and student deals, and compares sellers side by side on each show page. Scheduled GitHub Actions jobs keep the data fresh, and I'm working with ticket sellers to get live prices through official feeds and APIs.",
+    ],
+    links: [
+      { label: "Open TheaterMax", href: "https://naomi-meininger.github.io/theatermax/" },
+      { label: "Code on GitHub", href: "https://github.com/naomi-meininger/theatermax" },
+    ],
+    status: "Prototype",
+  },
+  {
     id: "ecotein",
     group: "usc",
     title: "Ecotein",
@@ -133,6 +150,7 @@ export const topics = ["Product", "Security", "Web apps", "Data & modeling", "Sy
 
 // Sections on the Projects page, in display order. Each project's `group` picks one.
 export const groups = [
+  { id: "current", name: "Current", detail: "What I'm building now" },
   { id: "usc", name: "USC", detail: "M.S. Integrated Design, Business, and Technology" },
   { id: "tufts", name: "Tufts University", detail: "B.S. Computer Science, minors in Mathematics and Theater" },
   { id: "personal", name: "Personal projects", detail: "Built on my own time" },
