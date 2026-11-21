@@ -160,8 +160,8 @@ export const groups = [
     id: "tufts",
     name: "Tufts University",
     detail: "B.S. Computer Science, minors in Mathematics and Theater",
-    logo: "https://brand.tufts.edu/sites/g/files/lrezom786/files/styles/large/public/2022-09/Tufts-logo-4c_5.jpg?itok=pQ14NYSX",
     accent: "#3172AE",
+    accent2: "#7AADE0",
   },
   { id: "personal", name: "Personal projects", detail: "Built on my own time" },
 ];
