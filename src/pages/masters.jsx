@@ -1,4 +1,6 @@
 import mount from "../mount.jsx";
+import { projects } from "../data/projects.js";
+import ProjectMark from "../components/ProjectMark.jsx";
 import Layout, { ExternalLink } from "../components/Layout.jsx";
 import Ecotein from "../components/Ecotein.jsx";
 import { program, courses, termNotes } from "../data/masters.js";
@@ -22,6 +24,25 @@ function Course({ course }) {
         )}
       </div>
       {CaseStudy && <CaseStudy />}
+      {course.projects?.length > 0 && (
+        <div className="course-projects">
+          {course.projects.map((id) => {
+            const p = projects.find((x) => x.id === id);
+            if (!p) return null;
+            return (
+              <a key={id} className="course-project reveal" href={`projects.html#${id}`}>
+                <ProjectMark id={id} />
+                <span>
+                  <span className="course-project-label">{p.status ?? "Project"}</span>
+                  <strong>{p.title}</strong>
+                  <span className="course-project-text">{p.body[0]}</span>
+                  <span className="text-link">See it on the Projects page</span>
+                </span>
+              </a>
+            );
+          })}
+        </div>
+      )}
       {course.upcoming && (
         <p className="course-upcoming"><span className="upcoming-dot" aria-hidden="true"></span>{course.upcoming}</p>
       )}
